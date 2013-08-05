@@ -1,0 +1,15 @@
+# readline設定ファイル
+set convert-meta off
+set output-meta on
+set meta-flag on
+
+# 携帯電話風delete
+"\d": forward-backward-delete-char
+
+# 補完で大文字小文字を区別しない
+set completion-ignore-case on
+
+"\C-n": history-search-forward
+"\C-p": history-search-backward
+# Ctrl-gで逐次補完
+"\C-g": menu-complete
