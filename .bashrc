@@ -4,6 +4,13 @@
 export EDITOR=vim
 #export LSCOLORS=ExFxCxdxBxegedabagacad #黒背景専用になってしまうのでボツ
 export NODE_PATH=/usr/local/lib/node_modules/
+export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+export LESS_TERMCAP_me=$'\E[0m'           # end mode
+export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 CR="$(echo -ne '\r')"
 LF="$(echo -ne '\n')"
@@ -40,7 +47,7 @@ export HOSTFILE="$HOME/.host_completion"
 complete -A hostname ssh
 complete -A command {man,which}
 
-alias ls='ls -G'
+alias ls='ls --color'
 alias ll='ls -la'
 alias dirs='dirs -v'
 alias ..='cd ..'
