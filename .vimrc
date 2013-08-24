@@ -3,34 +3,37 @@
 " vim: set foldmethod=marker:
 
 scriptencoding 'utf-8'
-
-""" Vundle setup
+set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-let g:vundle_default_git_proto = 'git'
+
+""" NeoBundle setup
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand('~/.vim/bundle'))
+let g:neobundle_default_git_protocol = 'git'
 
 """ Vundle plugins
 " from github
-Bundle 'gmarik/vundle'
-Bundle 'mattn/emmet-vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/unite.vim'
-Bundle 'thinca/vim-quickrun'
-Bundle 'thinca/vim-localrc'
-Bundle 'pangloss/vim-javascript'
-Bundle 'brookhong/DBGPavim'
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-localrc'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'brookhong/DBGPavim'
+NeoBundle 'bling/vim-airline'
 
 " from vim.org
-Bundle 'YankRing.vim'
-Bundle 'smartchr'
-Bundle 'xml.vim'
-Bundle 'sudo.vim'
-Bundle 'netrw.vim'
-Bundle 'project.tar.gz'
+NeoBundle 'YankRing.vim'
+NeoBundle 'smartchr'
+NeoBundle 'xml.vim'
+NeoBundle 'sudo.vim'
+NeoBundle 'netrw.vim'
 
 
 """""""
