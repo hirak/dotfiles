@@ -26,7 +26,8 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'brookhong/DBGPavim'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'itchyny/landscape.vim'
 
 " from vim.org
 NeoBundle 'YankRing.vim'
@@ -106,6 +107,10 @@ let g:neocomplcache_plugin_disable = {
 let g:neocomplcache_plugin_completion_length = {
 \ 'syntax_complete' : 100,
 \}
+
+let g:lightline = {
+            \ 'colorscheme': 'landscape',
+            \}
 
 set completeopt=menuone
 
