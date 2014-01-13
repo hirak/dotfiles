@@ -72,7 +72,7 @@ function share_hitory {
     history -c
     history -r
     echo $PWD >> ~/.cdhistory
-#    tail -2000 ~/.cdhistory | sort | uniq -c | sort -n | tail | sed 's/^ *[0-9]* *//' > ~/.cdranking
+    tail -2000 ~/.cdhistory | sort | uniq -c | sort -n | tail | sed 's/^ *[0-9]* *//' > ~/.cdranking
 }
 PROMPT_COMMAND='share_hitory'
 shopt -u histappend
