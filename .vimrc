@@ -16,7 +16,14 @@ let g:neobundle_default_git_protocol = 'git'
 """ Vundle plugins
 " from github
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+            \ 'build' : {
+            \ 'windows' : 'make -f make_mingw32.mak',
+            \ 'cygwin' : 'make -f make_cygwin.mak',
+            \ 'mac' : 'make -f make_mac.mak',
+            \ 'unix' : 'make -f make_unix.mak',
+            \ },
+            \}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Shougo/neocomplcache'
