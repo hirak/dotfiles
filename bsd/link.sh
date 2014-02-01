@@ -12,3 +12,4 @@ ln -s ~/workspace/dotfiles/.inputrc ~/.inputrc
 ln -s ~/workspace/dotfiles/.vimrc ~/.vimrc
 ln -s ~/workspace/dotfiles/.vim ~/.vim
 ln -s ~/workspace/dotfiles/bsd/.bashrc ~/.bashrc
+git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
