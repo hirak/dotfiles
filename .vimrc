@@ -27,6 +27,7 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Shougo/neocomplcache'
+"NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'thinca/vim-quickrun'
@@ -63,8 +64,8 @@ set tabstop=4 shiftwidth=4 softtabstop=4
 set expandtab
 
 "DELETEキーを有効にする
-set t_kD=
-inoremap  <ESC>lxi
+"set t_kD=
+"inoremap  <ESC>lxi
 "set t_kb=
 set term=xterm
 set ignorecase
@@ -87,7 +88,7 @@ let g:php_noShortTags=1
 let g:php_asp_tags=1
 
 " zencoding 設定
-let g:user_zen_settings = {
+let g:user_emmet_settings = {
 \  'lang' : 'ja',
 \  'indentation' : ' ',
 \  'css' : {
@@ -133,14 +134,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expan
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
-
-" 全角スペースをハイライト
-augroup highlightIdegraphicSpace
-    autocmd!
-    autocmd ColorScheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen
-    autocmd VimEnter,WinEnter * match IdeographicSpace /　/
-augroup END
 
 " statusline
 set laststatus=2

@@ -12,6 +12,23 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
+if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+fi
+
+if [ -f ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
+fi
+
+agent="$HOME/tmp/.ssh-agent-`hostname`"
+if [ -S "$agent" ]; then
+    export SSH_AUTH_SOCK=$agent
+elif [ ! -S "$SSH_AUTH_SOCK" ]; then
+    export SSH_AUTH_SOCK=$agent
+elif [ ! -L "$SSH_AUTH_SOCK" ]; then
+    ln -snf "$SSH_AUTH_SOCK" $agent && export SSH_AUTH_SOCK=$agent
+fi
+
 CR="$(echo -ne '\r')"
 LF="$(echo -ne '\n')"
 TAB="$(echo -ne '\t')"
@@ -21,23 +38,23 @@ COLOUR_RED="${ESC}[31m"
 COLOUR_GREEN="${ESC}[32m"
 COLOUR_YELLOW="${ESC}[33m"
 COLOUR_BLUE="${ESC}[34m"
-COLOUR_CYAN="${ESC}[35m"
-COLOUR_MAGENTA="${ESC}[36m"
+COLOUR_MAGENTA="${ESC}[35m"
+COLOUR_CYAN="${ESC}[36m"
 COLOUR_WHITE="${ESC}[37m"
 COLOUR_HIGHLIGHT_BLACK="${ESC}[30;1m"
 COLOUR_HIGHLIGHT_RED="${ESC}[31;1m"
 COLOUR_HIGHLIGHT_GREEN="${ESC}[32;1m"
 COLOUR_HIGHLIGHT_YELLOW="${ESC}[33;1m"
 COLOUR_HIGHLIGHT_BLUE="${ESC}[34;1m"
-COLOUR_HIGHLIGHT_CYAN="${ESC}[35;1m"
-COLOUR_HIGHLIGHT_MAGENTA="${ESC}[36;1m"
+COLOUR_HIGHLIGHT_MAGENTA="${ESC}[35;1m"
+COLOUR_HIGHLIGHT_CYAN="${ESC}[36;1m"
 COLOUR_HIGHLIGHT_WHITE="${ESC}[37;1m"
 COLOUR_DEFAULT="${ESC}[m"
 
 pscolor=$COLOUR_HIGHLIGHT_BLUE
 HOST=`hostname`
 
-PS1="\ek\e\134\[${pscolor}\][\u@$HOST:\w]\n\[${COLOUR_DEFAULT}\]\$ "
+export PS1="\ek\e\134\[${pscolor}\][\u@$HOST:\w]\[${COLOUR_HIGHLIGHT_YELLOW}\]\$(__git_ps1)\n\[${COLOUR_DEFAULT}\]\$ "
 export CVS_RSH=ssh
 export CVSEDITOR=vim
 
@@ -56,8 +73,6 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias sr='screen -x -U'
-#alias gccjs='java -jar ~/lib/gcc/compiler.jar'
-#alias yuicompressor='java -jar ~/bin/yuicompressor-2.4.6/build/yuicompressor-2.4.6.jar'
 
 alias view='vim - -R'
 
