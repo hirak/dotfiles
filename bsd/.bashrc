@@ -12,13 +12,8 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
-fi
-
-if [ -f ~/.git-prompt.sh ]; then
-    source ~/.git-prompt.sh
-fi
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
 
 agent="$HOME/tmp/.ssh-agent-`hostname`"
 if [ -S "$agent" ]; then

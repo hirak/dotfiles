@@ -14,6 +14,6 @@ ln -s ~/workspace/dotfiles/.inputrc ~/.inputrc
 ln -s ~/workspace/dotfiles/.vimrc ~/.vimrc
 ln -s ~/workspace/dotfiles/.vim ~/.vim
 ln -s ~/workspace/dotfiles/bsd/.bashrc ~/.bashrc
-ln -s ~/workspace/.git-completion.bash ~/.git-completion.bash
-ln -s ~/workspace/.git-prompt.sh ~/.git-prompt.sh
+ln -s ~/workspace/dotfiles/.git-completion.bash ~/.git-completion.bash
+ln -s ~/workspace/dotfiles/.git-prompt.sh ~/.git-prompt.sh
 git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
