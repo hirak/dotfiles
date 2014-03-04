@@ -12,6 +12,9 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+
 CR="$(echo -ne '\r')"
 LF="$(echo -ne '\n')"
 TAB="$(echo -ne '\t')"
@@ -21,23 +24,23 @@ COLOUR_RED="${ESC}[31m"
 COLOUR_GREEN="${ESC}[32m"
 COLOUR_YELLOW="${ESC}[33m"
 COLOUR_BLUE="${ESC}[34m"
-COLOUR_CYAN="${ESC}[35m"
-COLOUR_MAGENTA="${ESC}[36m"
+COLOUR_MAGENTA="${ESC}[35m"
+COLOUR_CYAN="${ESC}[36m"
 COLOUR_WHITE="${ESC}[37m"
 COLOUR_HIGHLIGHT_BLACK="${ESC}[30;1m"
 COLOUR_HIGHLIGHT_RED="${ESC}[31;1m"
 COLOUR_HIGHLIGHT_GREEN="${ESC}[32;1m"
 COLOUR_HIGHLIGHT_YELLOW="${ESC}[33;1m"
 COLOUR_HIGHLIGHT_BLUE="${ESC}[34;1m"
-COLOUR_HIGHLIGHT_CYAN="${ESC}[35;1m"
-COLOUR_HIGHLIGHT_MAGENTA="${ESC}[36;1m"
+COLOUR_HIGHLIGHT_MAGENTA="${ESC}[35;1m"
+COLOUR_HIGHLIGHT_CYAN="${ESC}[36;1m"
 COLOUR_HIGHLIGHT_WHITE="${ESC}[37;1m"
 COLOUR_DEFAULT="${ESC}[m"
 
 pscolor=$COLOUR_HIGHLIGHT_BLUE
 HOST=`hostname`
 
-PS1="\ek\e\134\[${pscolor}\][\u@$HOST:\w]\n\[${COLOUR_DEFAULT}\]\$ "
+export PS1="\ek\e\134\[${pscolor}\][\u@$HOST:\w]\[${COLOUR_HIGHLIGHT_YELLOW}\]\$(__git_ps1)\n\[${COLOUR_DEFAULT}\]\$ "
 export CVS_RSH=ssh
 export CVSEDITOR=vim
 
