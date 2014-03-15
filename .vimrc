@@ -49,6 +49,10 @@ NeoBundle 'netrw.vim'
 set encoding=utf-8
 set termencoding=utf-8
 
+set nobackup
+set noswapfile
+set nowritebackup
+
 set fileencoding=utf-8
 set fileencodings=utf-8,euc-jp,eucjp-ms,cp932
 set fileformats=unix,dos,mac
