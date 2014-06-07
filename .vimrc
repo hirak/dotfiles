@@ -26,8 +26,8 @@ NeoBundle 'Shougo/vimproc', {
             \}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'Shougo/neocomplcache'
-"NeoBundle 'Shougo/neocomplete'
+"NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'thinca/vim-quickrun'
