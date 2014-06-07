@@ -1,0 +1,12 @@
+#!/bin/sh
+uname -a
+if [ -e /etc/fedora-release ]; then
+    cat /etc/fedora-release
+elif [ -e /etc/redhat-release ]; then
+    cat /etc/redhat-release
+elif [ -e /etc/lsb-release ]; then
+    cat /etc/lsb-release
+elif [ -e /etc/debian_version ]; then
+    cat /etc/debian_version
+fi
+
