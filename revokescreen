@@ -1,0 +1,14 @@
+#!/bin/zsh
+## http://kenmemo.blogspot.jp/2011/04/screen-ssh.html
+
+SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
+netstat -lnx | perl -ne 'print "$1\n" if m|(/tmp/ssh-.+/agent.+)|' | while read agent
+do
+    if [ -r $agent ] ; then
+        echo "link: '$agent' to '$SSH_AUTH_SOCK'"
+        ln -fs $agent $SSH_AUTH_SOCK
+        export SSH_AUTH_SOCK
+        exit
+    fi
+done
+echo "Error: agent socket is not found."

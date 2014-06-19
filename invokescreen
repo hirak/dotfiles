@@ -1,0 +1,8 @@
+#!/bin/sh
+if [ ! -r "$HOME/.ssh/auth_sock" ] ; then
+   if [ "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/auth_sock" ]; then
+       ln -fs $SSH_AUTH_SOCK $HOME/.ssh/auth_sock
+   fi
+fi
+export SSH_AUTH_SOCK=$HOME/.ssh/auth_sock
+exec screen -xRU
