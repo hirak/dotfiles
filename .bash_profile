@@ -5,3 +5,4 @@ if [ -e ~/.phpbrew/bashrc ]; then
 fi
 source ~/.bashrc
 ;
+wwwwwwwwwwww
