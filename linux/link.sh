@@ -9,6 +9,7 @@ rm -rf ~/.vim
 rm -f ~/.git-completion.bash
 rm -f ~/.git-prompt.sh
 ln -s ~/workspace/dotfiles/.screenrc ~/.screenrc
+ln -s ~/workspace/dotfiles/revokescreen ~/bin/revokescreen
 ln -s ~/workspace/dotfiles/.bash_profile ~/.bash_profile
 ln -s ~/workspace/dotfiles/.inputrc ~/.inputrc
 ln -s ~/workspace/dotfiles/.vimrc ~/.vimrc
