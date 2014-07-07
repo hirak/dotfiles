@@ -36,6 +36,7 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'brookhong/DBGPavim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'itchyny/landscape.vim'
+NeoBundle 'elzr/vim-json'
 
 " from vim.org
 NeoBundle 'YankRing.vim'
