@@ -10,7 +10,7 @@ filetype off
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand('~/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 let g:neobundle_default_git_protocol = 'git'
 
 """ Vundle plugins
@@ -45,6 +45,7 @@ NeoBundle 'smartchr'
 NeoBundle 'xml.vim'
 NeoBundle 'sudo.vim'
 NeoBundle 'netrw.vim'
+call neobundle#end()
 
 
 """""""
