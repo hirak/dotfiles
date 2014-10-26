@@ -99,4 +99,9 @@ function sweep_history {
     cat ~/.bash_history|sort|uniq > ~/.bash_history.tmp
     mv ~/.bash_history.tmp ~/.bash_history
 }
+
+if [ -f ~/.bashrc_extra ]; then
+    source ~/.bashrc_extra
+fi
+
 return
