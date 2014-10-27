@@ -10,12 +10,15 @@ filetype off
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-call neobundle#begin(expand('~/.vim/bundle'))
 let g:neobundle_default_git_protocol = 'git'
 
 """ Vundle plugins
 " from github
+
+call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
+call neobundle#end()
+
 NeoBundle 'Shougo/vimproc', {
             \ 'build' : {
             \ 'windows' : 'make -f make_mingw32.mak',
@@ -26,26 +29,22 @@ NeoBundle 'Shougo/vimproc', {
             \}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kchmck/vim-coffee-script'
-"NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'pangloss/vim-javascript'
-"NeoBundle 'brookhong/DBGPavim'
 NeoBundle 'joonty/vdebug'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'elzr/vim-json'
 
 " from vim.org
-NeoBundle 'YankRing.vim'
 NeoBundle 'smartchr'
 NeoBundle 'xml.vim'
 NeoBundle 'sudo.vim'
 NeoBundle 'netrw.vim'
-call neobundle#end()
 
 
 """""""
