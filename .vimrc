@@ -90,7 +90,7 @@ let g:netrw_altv = 1
 let g:netrw_alto = 1
 
 " phpのsyntax設定
-let g:php_noShortTags=1
+"let g:php_noShortTags=1
 let g:php_asp_tags=1
 
 " zencoding 設定
