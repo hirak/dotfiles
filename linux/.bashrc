@@ -2,8 +2,8 @@
 # @Author: hinakano
 
 export EDITOR=vim
+export GOPATH=$HOME
 #export LSCOLORS=ExFxCxdxBxegedabagacad #黒背景専用になってしまうのでボツ
-export NODE_PATH=/usr/local/lib/node_modules/
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
 export LESS_TERMCAP_me=$'\E[0m'           # end mode
@@ -51,6 +51,7 @@ complete -A hostname ssh
 complete -A command {man,which}
 
 alias ls='ls --color'
+alias gh='cd $(ghq list -p | peco)'
 alias ll='ls -la'
 alias dirs='dirs -v'
 alias ..='cd ..'
