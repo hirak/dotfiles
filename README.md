@@ -17,3 +17,8 @@ linux
 windows
 -----
 - Windows 7+ (PowerShell)
+
+License
+-----
+
+MIT License

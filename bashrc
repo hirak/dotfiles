@@ -1,9 +1,9 @@
 # .bashrc
-# @Author: hinakano
+# vim: set ft=sh:
+# @author Hiraku Nakano <hiraku@tojiru.net>
 
 export EDITOR=vim
 export GOPATH=$HOME
-#export LSCOLORS=ExFxCxdxBxegedabagacad #黒背景専用になってしまうのでボツ
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
 export LESS_TERMCAP_me=$'\E[0m'           # end mode
@@ -50,7 +50,12 @@ export HOSTFILE="$HOME/.host_completion"
 complete -A hostname ssh
 complete -A command {man,which}
 
-alias ls='ls --color'
+if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    alias ls='ls --color'
+else
+    alias ls='ls -G'
+fi
+
 alias gh='cd $(ghq list -p | peco)'
 alias ll='ls -la'
 alias dirs='dirs -v'
@@ -60,10 +65,6 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias sr='screen -x -U'
-#alias gccjs='java -jar ~/lib/gcc/compiler.jar'
-#alias yuicompressor='java -jar ~/bin/yuicompressor-2.4.6/build/yuicompressor-2.4.6.jar'
-
-alias view='vim - -R'
 
 changecaption()
 {
