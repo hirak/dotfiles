@@ -95,6 +95,10 @@ let g:netrw_alto = 1
 "let g:php_noShortTags=1
 let g:php_asp_tags=1
 
+" filetype
+let g:filetype_m='objc'
+let g:filetype_md='markdown'
+
 " zencoding 設定
 let g:user_emmet_settings = {
 \  'lang' : 'ja',
