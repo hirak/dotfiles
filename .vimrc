@@ -39,6 +39,8 @@ NeoBundle 'joonty/vdebug'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'elzr/vim-json'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'toyamarinyon/vim-swift'
 
 " from vim.org
 NeoBundle 'smartchr'
