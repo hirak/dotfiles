@@ -50,7 +50,7 @@ export HOSTFILE="$HOME/.host_completion"
 complete -A hostname ssh
 complete -A command {man,which}
 
-if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+if [ `uname -s` == 'Linux' ]; then
     alias ls='ls --color'
 else
     alias ls='ls -G'
