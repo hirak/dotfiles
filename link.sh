@@ -18,13 +18,13 @@ ln -s $BASEDIR/revokescreen ~/bin/revokescreen
 ln -s $BASEDIR/.bash_profile ~/.bash_profile
 ln -s $BASEDIR/.inputrc ~/.inputrc
 ln -s $BASEDIR/.vimrc ~/.vimrc
-ln -s $BASEDIR/.vim ~/.vim
+if ! [ -d ~/.vim ]; then
+    ln -s $BASEDIR/.vim ~/.vim
+fi
 ln -s $BASEDIR/bashrc ~/.bashrc
 ln -s $BASEDIR/.git-completion.bash ~/.git-completion.bash
 ln -s $BASEDIR/.git-prompt.sh ~/.git-prompt.sh
 
-if [ -d ~/.vim/bundle/neobundle.vim ]
-then
-else
-    git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+if ! [ -d ~/.vim/bundle/neobundle.vim ]; then
+    git clone --depth 1 git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 fi
