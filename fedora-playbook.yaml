@@ -1,0 +1,42 @@
+# fedoraで環境構築
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  sudo: no
+
+  tasks:
+    - name: 基本ツール類を入れる
+      sudo: yes
+      yum:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - yum-fastestmirror
+        - "@Development tools"
+        - rpmdevtools
+        - createrepo
+        - yum-utils
+        - nodejs
+        - golang
+        - vim-enhanced
+        - screen
+        - ansible
+
+    - name: dotfilesコピー
+      git:
+        dest: ~/src/github.com/hirak/dotfiles
+        repo: git://github.com/hirak/dotfiles.git
+        update: yes
+
+    - name: dotfilesをリンク
+      shell: "sh link.sh"
+      args:
+        chdir: ~/src/github.com/hirak/dotfiles/
+        creates: ~/.vim/bundle/neobundle.vim
+
+    - name: ghqをインストール
+      shell: "go get github.com/motemen/ghq"
+
+    - name: pecoをインストール
+      shell: "go get github.com/peco/peco/cmd/peco"
+
