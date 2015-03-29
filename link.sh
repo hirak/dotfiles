@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if ! [ -d ~/bin ]; then
+    mkdir ~/bin
+fi
+
 rm -f ~/.bashrc
 rm -f ~/.bash_profile
 rm -f ~/.screenrc
