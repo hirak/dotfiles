@@ -81,7 +81,7 @@ function share_hitory {
 }
 PROMPT_COMMAND='share_hitory'
 shopt -u histappend
-export HISTSIZE=10000
+export HISTSIZE=100000
 export HISTFILE="$HOME/.bash_history"
 export HISTCONTROL='ignoreboth'
 
