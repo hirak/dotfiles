@@ -1,3 +1,3 @@
-if [ -d ~/.nodebrew/current/bin ]; then
+if [ -d ~/.nodebrew ]; then
     export PATH=~/.nodebrew/current/bin:$PATH
 fi
