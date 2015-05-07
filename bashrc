@@ -102,6 +102,10 @@ function sweep_history {
     mv ~/.bash_history.tmp ~/.bash_history
 }
 
+if [ -d ~/.bashrc.d ]; then
+    source ~/.bashrc.d/*.sh
+fi
+
 if [ -f ~/.bashrc_extra ]; then
     source ~/.bashrc_extra
 fi

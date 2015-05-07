@@ -25,6 +25,9 @@ ln -s $BASEDIR/.vimrc ~/.vimrc
 if ! [ -d ~/.vim ]; then
     ln -s $BASEDIR/.vim ~/.vim
 fi
+if ! [ -d ~/.bashrc.d ]; then
+    ln -s $BASEDIR/.bashrc.d ~/.bashrc.d
+fi
 ln -s $BASEDIR/bashrc ~/.bashrc
 ln -s $BASEDIR/.git-completion.bash ~/.git-completion.bash
 ln -s $BASEDIR/.git-prompt.sh ~/.git-prompt.sh
