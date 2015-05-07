@@ -40,7 +40,7 @@
         update: yes
 
     - name: dotfilesをリンク
-      shell: "sh link.sh"
+      shell: sh link.sh
       args:
         chdir: ~/src/github.com/hirak/dotfiles/
         creates: ~/.vim/bundle/neobundle.vim
@@ -49,16 +49,24 @@
     - name: get latest ghq version
       shell: curl -sI https://github.com/motemen/ghq/releases/latest | awk -F'/' '/^Location:/{print $NF}'
       register: ghq_latest_version
+      args:
+        creates: ~/bin/ghq
 
     - name: Download latest ghq (Linux)
       when: ansible_system == 'Linux'
-      shell: curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version }}/ghq_linux_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/ghq'
+      shell: |
+        curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_linux_amd64.tar.gz | \
+        tar zx -C ~/bin/ --strip=1 '*/ghq'
+        chmod +x ~/bin/ghq
       args:
         creates: ~/bin/ghq
 
     - name: Download latest ghq (Mac)
       when: ansible_system == 'Darwin'
-      shell: curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version }}/ghq_darwin_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/ghq'
+      shell: |
+        curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_darwin_amd64.tar.gz | \
+        tar zx -C ~/bin/ --strip=1 '*/ghq'
+        chmod +x ~/bin/ghq
       args:
         creates: ~/bin/ghq
 
@@ -66,31 +74,64 @@
     - name: get latest peco version
       shell: curl -sI https://github.com/peco/peco/releases/latest | awk -F'/' '/^Location:/{print $NF}'
       register: peco_latest_version
-
-    - name: Download latest peco (Linux)
-      when: ansible_system == 'Linux'
-      shell: curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version }}/peco_linux_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/peco'
       args:
         creates: ~/bin/peco
 
-    - name: Download latest ghq (Mac)
-      when: ansible_system == 'Darwin'
-      shell: curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version }}/peco_darwin_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/peco'
+    - name: Download latest peco (Linux)
+      when: ansible_system == 'Linux'
+      shell: |
+        curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version.stdout }}/peco_linux_amd64.tar.gz | \
+        tar zx -C ~/bin/ --strip=1 '*/peco'
+        chmod +x ~/peco
       args:
-        creates: ~/bin/ghq
+        creates: ~/bin/peco
+
+    - name: Download latest peco (Mac)
+      when: ansible_system == 'Darwin'
+      shell: |
+        curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version.stdout }}/peco_darwin_amd64.tar.gz | \
+        tar zx -C ~/bin/ --strip=1 '*/peco'
+        chmod +x ~/peco
+      args:
+        creates: ~/bin/peco
+
+    # direnv
+    - name: get latest direnv version
+      shell: curl -sI https://github.com/zimbatm/direnv/releases/latest | awk -F'/' '/^Location:/{print $NF}'
+      register: direnv_latest_version
+      args:
+        creates: ~/bin/direnv
+
+    - name: download latest direnv (Linux)
+      when: ansible_system == 'Linux'
+      shell: |
+        curl -sLo ~/bin/direnv https://github.com/zimbatm/direnv/releases/download/{{ direnv_latest_version.stdout }}/direnv.linux-amd64
+        chmod +x ~/bin/direnv
+      args:
+        creates: ~/bin/direnv
+
+    - name: download latest direnv (Mac)
+      when: ansible_system == 'Darwin'
+      shell: |
+        curl -sLo ~/bin/direnv https://github.com/zimbatm/direnv/releases/download/{{ direnv_latest_version.stdout }}/direnv.darwin-amd64
+        chmod +x ~/bin/direnv
+      args:
+        creates: ~/bin/direnv
 
     # jq
     - name: install jq (Linux)
       when: ansible_system == 'Linux'
       get_url:
         url: http://stedolan.github.io/jq/download/linux64/jq
-        dest: ~/bin/jq
+        dest: ~/bin/
+        mode: "0755"
 
     - name: install jq (Mac)
       when: ansible_system == 'Darwin'
       get_url:
         url: http://stedolan.github.io/jq/download/osx64/jq
-        dest: ~/bin/jq
+        dest: ~/bin/
+        mode: "0755"
 
     - name: nodebrewをインストール
       shell: curl -L git.io/nodebrew | perl - setup
