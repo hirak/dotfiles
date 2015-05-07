@@ -36,6 +36,7 @@
       git:
         dest: ~/src/github.com/hirak/dotfiles
         repo: git://github.com/hirak/dotfiles.git
+        accept_hostkey: yes
         update: yes
 
     - name: dotfilesをリンク
@@ -100,6 +101,7 @@
       git:
         dest: ~/src/github.com/CHH/phpenv
         repo: git://github.com/CHH/phpenv.git
+        accept_hostkey: yes
         update: yes
 
     - name: phpenvをアップデート
@@ -111,5 +113,6 @@
       git:
         dest: ~/.phpenv/plugins/php-build
         repo: git://github.com/php-build/php-build.git
+        accept_hostkey: yes
         update: yes
 
