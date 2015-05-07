@@ -3,30 +3,35 @@
 " vim: set foldmethod=marker:
 
 scriptencoding 'utf-8'
-set nocompatible
 filetype off
 
-""" NeoBundle setup
+let g:neobundle_default_git_protocol = 'git'
+let g:make = 'gmake'
+if system('uname -o') =~ '^GNU/'
+    let g:make = 'make'
+endif
+
+" Note: Skip initialization for vim-tiny or vim-small
+if !1 | finish | endif
+
 if has('vim_starting')
+    if &compatible
+        set nocompatible
+    endif
+
+    " Required:
     set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-let g:neobundle_default_git_protocol = 'git'
 
-""" Vundle plugins
-" from github
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
-call neobundle#begin(expand('~/.vim/bundle'))
+" Let NeoBundle manage NeoBundle
+" Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
 
-NeoBundle 'Shougo/vimproc', {
-            \ 'build' : {
-            \ 'windows' : 'make -f make_mingw32.mak',
-            \ 'cygwin' : 'make -f make_cygwin.mak',
-            \ 'mac' : 'make -f make_mac.mak',
-            \ 'unix' : 'make -f make_unix.mak',
-            \ },
-            \}
+" My Bundles here:
+NeoBundle 'Shougo/vimproc', {'build' : {'unix': g:make }}
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Shougo/neocomplete'
@@ -47,6 +52,8 @@ NeoBundle 'smartchr'
 NeoBundle 'xml.vim'
 NeoBundle 'sudo.vim'
 NeoBundle 'netrw.vim'
+
+call neobundle#end()
 
 
 """""""
@@ -71,10 +78,6 @@ set showmatch
 set tabstop=4 shiftwidth=4 softtabstop=4
 set expandtab
 
-"DELETEキーを有効にする
-"set t_kD=
-"inoremap  <ESC>lxi
-"set t_kb=
 set term=xterm
 set ignorecase
 set smartcase
