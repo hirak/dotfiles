@@ -1,7 +1,10 @@
 dotfiles
 ========
 
-my dotfiles.
+色々と書きかけのdotfiles  
+不定期に修正してるので不意に壊れることがあります。
+
+PullRequestは受け付けていません。
 
 bsd
 -----
