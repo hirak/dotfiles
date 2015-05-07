@@ -49,8 +49,15 @@
       shell: curl -sI https://github.com/motemen/ghq/releases/latest | awk -F'/' '/^Location:/{print $NF}'
       register: ghq_latest_version
 
-    - name: Download latest ghq
+    - name: Download latest ghq (Linux)
+      when: ansible_system == 'Linux'
       shell: curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version }}/ghq_linux_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/ghq'
+      args:
+        creates: ~/bin/ghq
+
+    - name: Download latest ghq (Mac)
+      when: ansible_system == 'Darwin'
+      shell: curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version }}/ghq_darwin_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/ghq'
       args:
         creates: ~/bin/ghq
 
@@ -59,11 +66,17 @@
       shell: curl -sI https://github.com/peco/peco/releases/latest | awk -F'/' '/^Location:/{print $NF}'
       register: peco_latest_version
 
-    - name: Download latest peco
+    - name: Download latest peco (Linux)
       when: ansible_system == 'Linux'
       shell: curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version }}/peco_linux_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/peco'
       args:
         creates: ~/bin/peco
+
+    - name: Download latest ghq (Mac)
+      when: ansible_system == 'Darwin'
+      shell: curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version }}/peco_darwin_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/peco'
+      args:
+        creates: ~/bin/ghq
 
     - name: nodebrewをインストール
       shell: curl -L git.io/nodebrew | perl - setup
