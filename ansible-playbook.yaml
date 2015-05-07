@@ -140,13 +140,17 @@
 
     - name: php-buildを単独インストール
       git:
-        dest: ~/.phps/php-build
+        dest: ~/src/github.com/php-build/php-build
         repo: git://github.com/php-build/php-build.git
         accept_hostkey: yes
         update: yes
 
     - name: php-buildのセットアップ
-      shell: PREFIX=~/.phps bash ~/.phps/php-build/install.sh
+      shell: ln -s ~/src/github.com/php-build/php-build/bin/php-build ~/bin/php-build
       args:
-        creates: ~/.phps/bin/php-build
+        creates: ~/bin/php-build
 
+    - name: ~/.php/を作成
+      shell: mkdir -p ~/.php
+      args:
+        creates: ~/.php
