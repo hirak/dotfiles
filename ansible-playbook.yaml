@@ -78,6 +78,19 @@
       args:
         creates: ~/bin/ghq
 
+    # jq
+    - name: install jq (Linux)
+      when: ansible_system == 'Linux'
+      get_url:
+        url: http://stedolan.github.io/jq/download/linux64/jq
+        dest: ~/bin/jq
+
+    - name: install jq (Mac)
+      when: ansible_system == 'Darwin'
+      get_url:
+        url: http://stedolan.github.io/jq/download/osx64/jq
+        dest: ~/bin/jq
+
     - name: nodebrewをインストール
       shell: curl -L git.io/nodebrew | perl - setup
       args:
