@@ -50,7 +50,7 @@
       register: ghq_latest_version
 
     - name: Download latest ghq
-      shell: curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_linux_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/ghq'
+      shell: curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version }}/ghq_linux_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/ghq'
       args:
         creates: ~/bin/ghq
 
@@ -61,7 +61,7 @@
 
     - name: Download latest peco
       when: ansible_system == 'Linux'
-      shell: curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version.stdout }}/peco_linux_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/peco'
+      shell: curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version }}/peco_linux_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/peco'
       args:
         creates: ~/bin/peco
 
