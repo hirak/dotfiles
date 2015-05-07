@@ -1,11 +1,11 @@
 # fedoraで環境構築
 - hosts: localhost
   connection: local
-  gather_facts: no
   sudo: no
 
   tasks:
-    - name: 基本ツール類を入れる
+    - name: 基本ツールインストール(RedHat系)
+      when: ansible_os_family == 'RedHat'
       sudo: yes
       yum:
         name: "{{ item }}"
@@ -16,11 +16,21 @@
         - rpmdevtools
         - createrepo
         - yum-utils
-        - nodejs
-        - golang
         - vim-enhanced
         - screen
         - ansible
+
+    - name: 基本ツールインストール(Debian系)
+      when: ansible_os_family == 'Debian'
+      sudo: yes
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - build-essential
+        - re2c
+        - vim-enhanced
+        - screen
 
     - name: dotfilesコピー
       git:
@@ -34,9 +44,47 @@
         chdir: ~/src/github.com/hirak/dotfiles/
         creates: ~/.vim/bundle/neobundle.vim
 
-    - name: ghqをインストール
-      shell: "go get github.com/motemen/ghq"
+    # ghq
+    - name: get latest ghq version
+      shell: curl -sI https://github.com/motemen/ghq/releases/latest | awk -F'/' '/^Location:/{print $NF}'
+      register: ghq_latest_version
 
-    - name: pecoをインストール
-      shell: "go get github.com/peco/peco/cmd/peco"
+    - name: Download latest ghq
+      when: ansible_system == 'Linux'
+      shell: curl -sL https://github.com/motemen/motemen/releases/download/{{ ghq_latest_version.stdout }}/ghq_linux_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/ghq'
+      args:
+        creates: ~/bin/ghq
+
+    # peco
+    - name: get latest peco version
+      shell: curl -sI https://github.com/peco/peco/releases/latest | awk -F'/' '/^Location:/{print $NF}'
+      register: peco_latest_version
+
+    - name: Download latest peco
+      when: ansible_system == 'Linux'
+      shell: curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version.stdout }}/peco_linux_amd64.tar.gz | tar zx -C ~/bin/ --strip=1 '*/peco'
+      args:
+        creates: ~/bin/peco
+
+    - name: nodebrewをインストール
+      shell: curl -L git.io/nodebrew | perl - setup
+      args:
+        creates: ~/.nodebrew
+
+    - name: phpenvをインストール
+      git:
+        dest: ~/src/github.com/CHH/phpenv
+        repo: git://github.com/CHH/phpenv.git
+        update: yes
+
+    - name: phpenvをアップデート
+      shell: UPDATE=yes bash bin/phpenv-install.sh
+      args:
+        chdir: ~/src/github.com/CHH/phpenv/
+
+    - name: php-buildをインストール
+      git:
+        dest: ~/.phpenv/plugins/php-build
+        repo: git://github.com/php-build/php-build.git
+        update: yes
 
