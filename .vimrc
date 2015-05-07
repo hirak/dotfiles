@@ -6,10 +6,6 @@ scriptencoding 'utf-8'
 filetype off
 
 let g:neobundle_default_git_protocol = 'git'
-let g:make = 'gmake'
-if system('uname -o') =~ '^GNU/'
-    let g:make = 'make'
-endif
 
 " Note: Skip initialization for vim-tiny or vim-small
 if !1 | finish | endif
@@ -31,11 +27,20 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
-NeoBundle 'Shougo/vimproc', {'build' : {'unix': g:make }}
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-localrc'
