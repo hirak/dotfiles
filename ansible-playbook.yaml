@@ -138,22 +138,15 @@
       args:
         creates: ~/.nodebrew
 
-    - name: phpenvをインストール
+    - name: php-buildを単独インストール
       git:
-        dest: ~/src/github.com/CHH/phpenv
-        repo: git://github.com/CHH/phpenv.git
-        accept_hostkey: yes
-        update: yes
-
-    - name: phpenvをアップデート
-      shell: UPDATE=yes bash bin/phpenv-install.sh
-      args:
-        chdir: ~/src/github.com/CHH/phpenv/
-
-    - name: php-buildをインストール
-      git:
-        dest: ~/.phpenv/plugins/php-build
+        dest: ~/.phps/php-build
         repo: git://github.com/php-build/php-build.git
         accept_hostkey: yes
         update: yes
+
+    - name: php-buildのセットアップ
+      shell: PREFIX=~/.phps bash ~/.phps/php-build/install.sh
+      args:
+        creates: ~/.phps/bin/php-build
 
