@@ -138,6 +138,7 @@
       args:
         creates: ~/.nodebrew
 
+    # php
     - name: php-buildを単独インストール
       git:
         dest: ~/src/github.com/php-build/php-build
@@ -154,3 +155,14 @@
       shell: mkdir -p ~/.php
       args:
         creates: ~/.php
+
+    - name: composerダウンロード
+      shell: curl -sLo ~/bin/composer http://packagist.jp/composer.phar
+      args:
+        creates: ~/bin/composer
+
+    - name: phpunitダウンロード
+      shell: curl -sLo ~/bin/phpunit http://packagist.jp/phpunit.phar
+      args:
+        creates: ~/bin/phpunit
+
