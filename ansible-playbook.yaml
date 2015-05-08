@@ -2,15 +2,6 @@
 - hosts: localhost
   connection: local
   sudo: no
-  vars:
-  {% if ansible_system == 'Linux' %}
-    os_type: 'linux'
-    jq_type: 'linux'
-  {% elif ansible_system == 'Darwin' %}
-    os_type: 'darwin'
-    jq_type: 'osx'
-  {% endif %}
-
 
   tasks:
     - name: 基本ツールインストール(RedHat系)
@@ -63,7 +54,7 @@
 
     - name: Download latest ghq
       shell: |
-        curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_{{ os_type }}_amd64.tar.gz | \
+        curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_{{ ansible_system | lower }}_amd64.tar.gz | \
         tar zx -C ~/bin/ --strip=1 '*/ghq'
         chmod +x ~/bin/ghq
       args:
@@ -78,7 +69,7 @@
 
     - name: Download latest peco
       shell: |
-        curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version.stdout }}/peco_{{ os_type }}_amd64.tar.gz | \
+        curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version.stdout }}/peco_{{ ansible_system | lower }}_amd64.tar.gz | \
         tar zx -C ~/bin/ --strip=1 '*/peco'
         chmod +x ~/peco
       args:
@@ -93,17 +84,21 @@
 
     - name: download latest direnv
       shell: |
-        curl -sLo ~/bin/direnv https://github.com/zimbatm/direnv/releases/download/{{ direnv_latest_version.stdout }}/direnv.{{ os_type }}-amd64
+        curl -sLo ~/bin/direnv https://github.com/zimbatm/direnv/releases/download/{{ direnv_latest_version.stdout }}/direnv.{{ ansible_system | lower }}-amd64
         chmod +x ~/bin/direnv
       args:
         creates: ~/bin/direnv
 
     # jq
     - name: install jq
-      get_url:
-        url: http://stedolan.github.io/jq/download/{{ jq_type }}64/jq
-        dest: ~/bin/
-        mode: "0755"
+      shell: |
+        if [ "{{ ansible_system }}" == "Darwin" ]; then
+          type=osx
+        else
+          type=linux
+        fi
+        curl -sLo ~/bin/jq http://stedolan.github.io/jq/download/${type}64/jq
+        chmod +x ~/bin/jq
 
     - name: nodebrewをインストール
       shell: curl -L git.io/nodebrew | perl - setup
