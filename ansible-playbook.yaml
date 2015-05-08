@@ -100,6 +100,7 @@
         curl -sLo ~/bin/jq http://stedolan.github.io/jq/download/${type}64/jq
         chmod +x ~/bin/jq
 
+    # node.js
     - name: nodebrewをインストール
       shell: curl -L git.io/nodebrew | perl - setup
       args:
@@ -114,7 +115,7 @@
         update: true
 
     - name: php-buildのセットアップ
-      shell: ln -s ~/src/github.com/php-build/php-build/bin/php-build ~/bin/php-build
+      command: ln -s ~/src/github.com/php-build/php-build/bin/php-build ~/bin/php-build
       args:
         creates: ~/bin/php-build
 
@@ -144,6 +145,11 @@
         repo: git://github.com/sstephenson/ruby-build.git
         accept_hostkey: true
         update: true
+
+    - name: ruby-buildのセットアップ
+      command: ln -s ~/src/github.com/sstephenson/ruby-build/bin/ruby-build ~/bin/ruby-build
+      args:
+        creates: ~/bin/ruby-build
 
     - name: ~/.ruby/を作成
       command: mkdir -p ~/.ruby
