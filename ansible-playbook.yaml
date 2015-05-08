@@ -92,7 +92,7 @@
     # jq
     - name: install jq
       shell: |
-        if [ "{{ ansible_system }}" == "Darwin" ]; then
+        if [ "{{ ansible_system }}" = "Darwin" ]; then
           type=osx
         else
           type=linux
@@ -110,8 +110,8 @@
       git:
         dest: ~/src/github.com/php-build/php-build
         repo: git://github.com/hirak/php-build.git
-        accept_hostkey: yes
-        update: yes
+        accept_hostkey: true
+        update: true
 
     - name: php-buildのセットアップ
       shell: ln -s ~/src/github.com/php-build/php-build/bin/php-build ~/bin/php-build
@@ -119,7 +119,7 @@
         creates: ~/bin/php-build
 
     - name: ~/.php/を作成
-      shell: mkdir -p ~/.php
+      command: mkdir -p ~/.php
       args:
         creates: ~/.php
 
@@ -137,3 +137,15 @@
       args:
         creates: ~/bin/phpunit
 
+    # ruby
+    - name: ruby-buildを単独インストール
+      git:
+        dest: ~/src/github.com/sstephenson/ruby-build
+        repo: git://github.com/sstephenson/ruby-build.git
+        accept_hostkey: true
+        update: true
+
+    - name: ~/.ruby/を作成
+      command: mkdir -p ~/.ruby
+      args:
+        creates: ~/.ruby

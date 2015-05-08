@@ -50,7 +50,7 @@ export HOSTFILE="$HOME/.host_completion"
 complete -A hostname ssh
 complete -A command {man,which}
 
-if [ `uname -s` == 'Linux' ]; then
+if [ `uname -s` = 'Linux' ]; then
     alias ls='ls --color'
 else
     alias ls='ls -G'
@@ -103,7 +103,9 @@ function sweep_history {
 }
 
 if [ -d ~/.bashrc.d ]; then
-    source ~/.bashrc.d/*.sh
+    for i in ~/.bashrc.d/*.sh ; do
+        source $i
+    done
 fi
 
 if [ -f ~/.bashrc_extra ]; then
