@@ -15,6 +15,9 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
+echo -n 'git config --get user.email: '
+git config --get user.email
+
 CR="$(echo -ne '\r')"
 LF="$(echo -ne '\n')"
 TAB="$(echo -ne '\t')"
