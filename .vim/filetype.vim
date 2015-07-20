@@ -15,4 +15,5 @@ augroup mysetting
     au BufRead,BufNewFile *.md,*.markdown set ft=markdown
     au BufRead composer.lock set ft=json
     au BufRead,BufNewFile upstart.conf set ft=upstart
+    au BufRead,BufNewFile Berksfile set ft=ruby
 augroup END
