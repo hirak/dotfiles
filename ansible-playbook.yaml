@@ -54,9 +54,12 @@
 
     - name: Download latest ghq
       shell: |
-        curl -sL https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_{{ ansible_system | lower }}_amd64.tar.gz | \
-        tar zx -C ~/bin/ --strip=1 --wildcards '*/ghq'
+        mkdir ghq_tmp
+        curl -sL -o ghq_tmp/ghq.zip https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_{{ ansible_system | lower }}_amd64.zip | \
+        unzip ghq_tmp/ghq.zip
+        mv ghq_tmp/ghq ~/bin/ghq
         chmod +x ~/bin/ghq
+        rm -rf ghq_tmp
       args:
         creates: ~/bin/ghq
 
