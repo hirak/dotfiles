@@ -19,7 +19,7 @@ augroup mysetting
     au FileType c :syntax keyword controllib setjmp longjmp assert signal raise
     au FileType c :highlight controllib ctermfg=darkblue
 
-    au FileType cpp :syntax keyword std std string cout cerr clog cin istream ostream ifstream ofstream bitset deque list map multimap multiset priority_queue queue set stack vector chrono unordered_map unique_ptr boost
+    au FileType cpp :syntax keyword std std string cout cerr clog cin fstream istream ostream ifstream ofstream bitset deque list map multimap multiset priority_queue queue set stack vector chrono unordered_map unique_ptr boost make_shared make_unique
     au FileType cpp :highlight std ctermfg=darkcyan
 
     au FileType yaml setlocal sw=2 sts=2 ts=2
