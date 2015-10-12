@@ -51,6 +51,9 @@ NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'mxw/vim-jsx'
 NeoBundle 'toyamarinyon/vim-swift'
+NeoBundle 'vim-jp/vim-go-extra'
+NeoBundle 'NLKNguyen/papercolor-theme'
+NeoBundle 'octol/vim-cpp-enhanced-highlight'
 
 " from vim.org
 NeoBundle 'smartchr'
@@ -156,7 +159,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 let g:lightline = {
-            \ 'colorscheme': 'landscape',
+            \ 'colorscheme': 'PaperColor',
             \}
 
 set completeopt=menuone
@@ -219,7 +222,7 @@ set background=dark
 
 "256色表示の許可
 set t_Co=256
-colorscheme mycolor
+colorscheme PaperColor
 
 
 "nmap {{{

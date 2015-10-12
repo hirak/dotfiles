@@ -26,9 +26,13 @@ augroup mysetting
     au FileType ruby setlocal sw=2 sts=2 ts=2
     au FileType html setlocal sw=1 sts=1 ts=1
     au FileType xml  setlocal sw=2 sts=2 ts=2
+    au FileType go setlocal sw=2 sts=2 ts=2 noexpandtab
+    au FileType go :syntax keyword gospecial err
+    au FileType go :highlight gospecial ctermfg=darkyellow
 
     au BufRead,BufNewFile *.md,*.markdown set ft=markdown
     au BufRead composer.lock set ft=json
     au BufRead,BufNewFile upstart.conf set ft=upstart
     au BufRead,BufNewFile Berksfile set ft=ruby
+    hi SpecialKey ctermfg=black guifg=black
 augroup END
