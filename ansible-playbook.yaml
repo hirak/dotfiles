@@ -40,7 +40,7 @@
         update: yes
 
     - name: dotfilesをリンク
-      shell: sh link.sh
+      shell: sh link.sh; source ~/.bash_profile
       args:
         chdir: ~/src/github.com/hirak/dotfiles/
         creates: ~/.vim/bundle/neobundle.vim
@@ -55,7 +55,7 @@
     - name: Download latest ghq
       shell: |
         mkdir ghq_tmp
-        curl -sL -o ghq_tmp/ghq.zip https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_{{ ansible_system | lower }}_amd64.zip | \
+        curl -sL -o ghq_tmp/ghq.zip https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_{{ ansible_system | lower }}_amd64.zip
         unzip ghq_tmp/ghq.zip
         mv ghq_tmp/ghq ~/bin/ghq
         chmod +x ~/bin/ghq
@@ -80,15 +80,7 @@
 
     # direnv
     - name: get latest direnv version
-      shell: curl -sI https://github.com/direnv/direnv/releases/latest | awk -F'/' '/^Location:/{print $NF}'
-      register: direnv_latest_version
-      args:
-        creates: ~/bin/direnv
-
-    - name: download latest direnv
-      shell: |
-        curl -sLo ~/bin/direnv https://github.com/direnv/direnv/releases/download/{{ direnv_latest_version.stdout }}/direnv.{{ ansible_system | lower }}-amd64
-        chmod +x ~/bin/direnv
+      shell: go get github.com/direnv/direnv
       args:
         creates: ~/bin/direnv
 
