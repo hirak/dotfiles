@@ -4,33 +4,33 @@
   sudo: no
 
   tasks:
-    - name: 基本ツールインストール(RedHat系)
-      when: ansible_os_family == 'RedHat'
-      sudo: yes
-      yum:
-        name: "{{ item }}"
-        state: latest
-      with_items:
-        - yum-fastestmirror
-        - "@Development tools"
-        - rpmdevtools
-        - createrepo
-        - yum-utils
-        - vim-enhanced
-        - screen
-        - ansible
-
-    - name: 基本ツールインストール(Debian系)
-      when: ansible_os_family == 'Debian'
-      sudo: yes
-      apt:
-        name: "{{ item }}"
-        state: latest
-      with_items:
-        - build-essential
-        - re2c
-        - vim-enhanced
-        - screen
+    #- name: 基本ツールインストール(RedHat系)
+    #  when: ansible_os_family == 'RedHat'
+    #  sudo: yes
+    #  yum:
+    #    name: "{{ item }}"
+    #    state: latest
+    #  with_items:
+    #    - yum-fastestmirror
+    #    - "@Development tools"
+    #    - rpmdevtools
+    #    - createrepo
+    #    - yum-utils
+    #    - vim-enhanced
+    #    - screen
+    #    - ansible
+    #
+    #- name: 基本ツールインストール(Debian系)
+    #  when: ansible_os_family == 'Debian'
+    #  sudo: yes
+    #  apt:
+    #    name: "{{ item }}"
+    #    state: latest
+    #  with_items:
+    #    - build-essential
+    #    - re2c
+    #    - vim-enhanced
+    #    - screen
 
     - name: dotfilesコピー
       git:
