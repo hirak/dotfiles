@@ -28,6 +28,8 @@
     #    state: latest
     #  with_items:
     #    - build-essential
+    #    - unzip
+    #    - golang
     #    - re2c
     #    - vim-enhanced
     #    - screen
@@ -55,10 +57,12 @@
     - name: Download latest ghq
       shell: |
         mkdir ghq_tmp
-        curl -sL -o ghq_tmp/ghq.zip https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_{{ ansible_system | lower }}_amd64.zip
-        unzip ghq_tmp/ghq.zip
-        mv ghq_tmp/ghq ~/bin/ghq
+        cd ghq_tmp
+        curl -sL -o ghq.zip https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_{{ ansible_system | lower }}_amd64.zip
+        unzip ghq.zip
+        mv ghq ~/bin/ghq
         chmod +x ~/bin/ghq
+        cd ..
         rm -rf ghq_tmp
       args:
         creates: ~/bin/ghq
