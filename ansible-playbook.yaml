@@ -74,7 +74,7 @@
       shell: |
         curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version.stdout }}/peco_{{ ansible_system | lower }}_amd64.tar.gz | \
         tar zx -C ~/bin/ --strip=1 --wildcards '*/peco'
-        chmod +x ~/peco
+        chmod +x ~/bin/peco
       args:
         creates: ~/bin/peco
 
