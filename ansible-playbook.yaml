@@ -108,13 +108,13 @@
     # php
     - name: php-buildを単独インストール
       git:
-        dest: ~/src/github.com/hirak/php-build
-        repo: git://github.com/hirak/php-build.git
+        dest: ~/src/github.com/php-build/php-build
+        repo: git://github.com/php-build/php-build.git
         accept_hostkey: true
         update: true
 
     - name: php-buildのセットアップ
-      command: ln -s ~/src/github.com/hirak/php-build/bin/php-build ~/bin/php-build
+      command: ln -s ~/src/github.com/php-build/php-build/bin/php-build ~/bin/php-build
       args:
         creates: ~/bin/php-build
 
