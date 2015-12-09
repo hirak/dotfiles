@@ -34,5 +34,5 @@ augroup mysetting
     au BufRead composer.lock set ft=json
     au BufRead,BufNewFile upstart.conf set ft=upstart
     au BufRead,BufNewFile Berksfile set ft=ruby
-    hi SpecialKey ctermfg=black guifg=black
+    hi SpecialKey ctermfg=darkgray
 augroup END

@@ -5,7 +5,7 @@ function greph() {
         --exclude-dir='.svn' \
         --include='*.h' \
         --include='*.hpp' \
-        $1 .
+        "$1" .
 }
 
 # for C/C++
@@ -20,7 +20,7 @@ function grepc() {
         --include='*.cc' \
         --include='*.cpp' \
         --include='*.cxx' \
-        $1 .
+        "$1" .
 }
 
 # for Web
@@ -34,5 +34,5 @@ function grepw() {
       --include='*.rb' \
       --include='*.pl' \
       --include='*.py' \
-      $1 .
+      "$1" .
 }
