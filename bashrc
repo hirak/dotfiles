@@ -116,3 +116,6 @@ if [ -f ~/.bashrc_extra ]; then
 fi
 
 return
+
+# added by travis gem
+[ -f /Users/hiraku/.travis/travis.sh ] && source /Users/hiraku/.travis/travis.sh

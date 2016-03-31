@@ -52,6 +52,9 @@ NeoBundle 'toyamarinyon/vim-swift'
 NeoBundle 'vim-jp/vim-go-extra'
 NeoBundle 'NLKNguyen/papercolor-theme'
 NeoBundle 'octol/vim-cpp-enhanced-highlight'
+NeoBundle 'ekalinin/Dockerfile.vim'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'tyru/open-browser-github.vim'
 
 " from vim.org
 NeoBundle 'smartchr'
