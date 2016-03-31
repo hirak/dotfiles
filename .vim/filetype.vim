@@ -126,7 +126,7 @@ augroup mysetting
         \ RETURN_ARR
         \ RETURN_OBJ
         \ RETURN_ZVAL
-    
+
     au FileType c :highlight php_macro ctermfg=magenta
 
     au FileType cpp :syntax keyword std std string cout cerr clog cin fstream istream ostream ifstream ofstream bitset deque list map multimap multiset priority_queue queue set stack vector chrono unordered_map unique_ptr boost make_shared make_unique

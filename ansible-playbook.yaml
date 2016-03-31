@@ -34,51 +34,28 @@
     #    - vim-enhanced
     #    - screen
 
-    - name: dotfilesコピー
-      git:
-        dest: ~/src/github.com/hirak/dotfiles
-        repo: git://github.com/hirak/dotfiles.git
-        accept_hostkey: yes
-        update: yes
+    #- name: dotfilesコピー
+    #  git:
+    #    dest: ~/src/github.com/hirak/dotfiles
+    #    repo: git://github.com/hirak/dotfiles.git
+    #    accept_hostkey: yes
+    #    update: yes
 
-    - name: dotfilesをリンク
-      shell: sh link.sh; source ~/.bash_profile
-      args:
-        chdir: ~/src/github.com/hirak/dotfiles/
-        creates: ~/.vim/bundle/neobundle.vim
+    #- name: dotfilesをリンク
+    #  shell: sh link.sh; source ~/.bash_profile
+    #  args:
+    #    chdir: ~/src/github.com/hirak/dotfiles/
+    #    creates: ~/.vim/bundle/neobundle.vim
 
     # ghq
-    - name: get latest ghq version
-      shell: curl -sI https://github.com/motemen/ghq/releases/latest | awk -F'/' '/^Location:/{print $NF}'
-      register: ghq_latest_version
-      args:
-        creates: ~/bin/ghq
-
     - name: Download latest ghq
-      shell: |
-        mkdir ghq_tmp
-        cd ghq_tmp
-        curl -sL -o ghq.zip https://github.com/motemen/ghq/releases/download/{{ ghq_latest_version.stdout }}/ghq_{{ ansible_system | lower }}_amd64.zip
-        unzip ghq.zip
-        mv ghq ~/bin/ghq
-        chmod +x ~/bin/ghq
-        cd ..
-        rm -rf ghq_tmp
+      shell: go get github.com/motemen/ghq
       args:
         creates: ~/bin/ghq
 
     # peco
-    - name: get latest peco version
-      shell: curl -sI https://github.com/peco/peco/releases/latest | awk -F'/' '/^Location:/{print $NF}'
-      register: peco_latest_version
-      args:
-        creates: ~/bin/peco
-
     - name: Download latest peco
-      shell: |
-        curl -sL https://github.com/peco/peco/releases/download/{{ peco_latest_version.stdout }}/peco_{{ ansible_system | lower }}_amd64.tar.gz | \
-        tar zx -C ~/bin/ --strip=1 --wildcards '*/peco'
-        chmod +x ~/bin/peco
+      shell: go get github.com/peco/peco/cmd/peco
       args:
         creates: ~/bin/peco
 
@@ -92,11 +69,10 @@
     - name: install jq
       shell: |
         if [ "{{ ansible_system }}" = "Darwin" ]; then
-          type=osx
+          curl -sLo ~/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64
         else
-          type=linux
+          curl -sLo ~/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
         fi
-        curl -sLo ~/bin/jq http://stedolan.github.io/jq/download/${type}64/jq
         chmod +x ~/bin/jq
 
     # node.js
@@ -108,13 +84,13 @@
     # php
     - name: php-buildを単独インストール
       git:
-        dest: ~/src/github.com/hirak/php-build
-        repo: git://github.com/hirak/php-build.git
+        dest: ~/src/github.com/php-build/php-build
+        repo: git://github.com/php-build/php-build.git
         accept_hostkey: true
         update: true
 
     - name: php-buildのセットアップ
-      command: ln -s ~/src/github.com/hirak/php-build/bin/php-build ~/bin/php-build
+      command: ln -s ~/src/github.com/php-build/php-build/bin/php-build ~/bin/php-build
       args:
         creates: ~/bin/php-build
 
@@ -125,14 +101,14 @@
 
     - name: composerダウンロード
       shell: |
-        curl -sLo ~/bin/composer http://packagist.jp/composer.phar
+        curl -sLo ~/bin/composer https://getcomposer.org/composer.phar
         chmod +x ~/bin/composer
       args:
         creates: ~/bin/composer
 
     - name: phpunitダウンロード
       shell: |
-        curl -sLo ~/bin/phpunit http://packagist.jp/phpunit.phar
+        curl -sLo ~/bin/phpunit https://phar.phpunit.de/phpunit.phar
         chmod +x ~/bin/phpunit
       args:
         creates: ~/bin/phpunit
