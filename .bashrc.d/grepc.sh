@@ -46,6 +46,7 @@ grepw() {
       --exclude='*.min.js' \
       --exclude='*.min.css' \
       --include='*.js' \
+      --include='*.json' \
       --include='*.ejs' \
       --include='*.css' \
       --include='*.scss' \
@@ -55,6 +56,18 @@ grepw() {
       --include='*.rb' \
       --include='*.pl' \
       --include='*.py' \
+      "$1" "$dir"
+}
+
+# for Go
+grepg() {
+    local dir=${2:-.}
+    LANG=C fgrep --color -Inr \
+      --exclude-dir='.git' \
+      --exclude-dir='.svn' \
+      --exclude-dir='node_modules' \
+      --exclude-dir='_vendor' \
+      --include='*.go' \
       "$1" "$dir"
 }
 
@@ -73,7 +86,15 @@ grepw-vim() {
 
 find-vim() {
     local dir=${2:-.}
-    local target=$(find "$dir" -name "$1" -type f -not -path "*.git*" -not -path "*svn*" | peco)
+    local target=$(find "$dir" -name "*$1*" -type f -not -path "*.git*" -not -path "*.svn*" | peco)
+    if [[ "$target" != "" ]]
+    then
+        vim "$target"
+    fi
+}
+
+git-vim() {
+    local target=$(git status -s | peco | cut -f3 -d' ')
     if [[ "$target" != "" ]]
     then
         vim "$target"
@@ -82,7 +103,7 @@ find-vim() {
 
 find-cd() {
     local dir=${2:-.}
-    local target=$(find "$dir" -name "$1" -type d -not -path "*.git*" -not -path "*svn*" | peco)
+    local target=$(find "$dir" -name "*$1*" -type d -not -path "*.git*" -not -path "*.svn*" | peco)
     if [[ "$target" != "" ]]
     then
         cd "$target"
