@@ -1,6 +1,7 @@
 #!/bin/sh
 
-if ! [ -d ~/bin ]; then
+if [ ! -d ~/bin ]
+then
     mkdir ~/bin
 fi
 
@@ -9,7 +10,8 @@ rm -f ~/.bash_profile
 rm -f ~/.screenrc
 rm -f ~/.inputrc
 rm -f ~/.vimrc
-rm -rf ~/.vim/bundle/neobundle.vim/
+#rm -rf ~/.vim/bundle/neobundle.vim/
+rm -rf ~/.vim/dein
 rm -f ~/.git-completion.bash
 rm -f ~/.git-prompt.sh
 rm -f ~/.gitconfig
@@ -32,6 +34,14 @@ ln -s $BASEDIR/bashrc ~/.bashrc
 ln -s $BASEDIR/.git-completion.bash ~/.git-completion.bash
 ln -s $BASEDIR/.git-prompt.sh ~/.git-prompt.sh
 
-if ! [ -d ~/.vim/bundle/neobundle.vim ]; then
-    git clone --depth 1 git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+#if [ ! -d ~/.vim/bundle/neobundle.vim ]
+#then
+#    git clone --depth 1 git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+#fi
+
+if [ ! -d ~/.vim/dein ]
+then
+    curl -sLo ~/bin/dein-installer.sh https://github.com/Shougo/dein.vim/raw/master/bin/installer.sh
+    sh ~/bin/dein-installer.sh ~/.vim/dein
+    rm ~/bin/dein-installer.sh
 fi

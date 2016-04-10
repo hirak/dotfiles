@@ -5,64 +5,55 @@
 scriptencoding 'utf-8'
 filetype off
 
-" Note: Skip initialization for vim-tiny or vim-small
-if !1 | finish | endif
-
-if has('vim_starting')
-    if &compatible
-        set nocompatible
-    endif
-
-    " Required:
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+"dein Scripts-----------------------------
+if &compatible
+    set nocompatible               " Be iMproved
 endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim/
 
+call dein#begin(expand('~/.vim/dein/'))
+" Let dein manage dein
 " Required:
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-localrc'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'joonty/vdebug'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'itchyny/landscape.vim'
-NeoBundle 'elzr/vim-json'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'toyamarinyon/vim-swift'
-NeoBundle 'vim-jp/vim-go-extra'
-NeoBundle 'NLKNguyen/papercolor-theme'
-NeoBundle 'octol/vim-cpp-enhanced-highlight'
-NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'tyru/open-browser-github.vim'
+call dein#add('Shougo/dein.vim')
+"call dein#add('Shougo/vimproc.vim', 'make')
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('mattn/emmet-vim')
+call dein#add('kchmck/vim-coffee-script')
+call dein#add('Shougo/neocomplete')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('Shougo/unite.vim')
+call dein#add('thinca/vim-quickrun')
+call dein#add('thinca/vim-localrc')
+call dein#add('pangloss/vim-javascript')
+call dein#add('joonty/vdebug')
+call dein#add('itchyny/lightline.vim')
+call dein#add('itchyny/landscape.vim')
+call dein#add('elzr/vim-json')
+call dein#add('mxw/vim-jsx')
+call dein#add('toyamarinyon/vim-swift')
+call dein#add('vim-jp/vim-go-extra')
+call dein#add('NLKNguyen/papercolor-theme')
+call dein#add('ekalinin/Dockerfile.vim')
+call dein#add('tyru/open-browser.vim')
+call dein#add('tyru/open-browser-github.vim')
 
 " from vim.org
-NeoBundle 'smartchr'
-NeoBundle 'xml.vim'
-NeoBundle 'sudo.vim'
-NeoBundle 'netrw.vim'
+call dein#add('smartchr')
+call dein#add('xml.vim')
+call dein#add('sudo.vim')
+call dein#add('netrw.vim')
 
-call neobundle#end()
+" Required:
+call dein#end()
+
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
 
 
 """""""
@@ -105,7 +96,7 @@ let g:netrw_alto = 1
 
 " phpのsyntax設定
 "let g:php_noShortTags=1
-let g:php_asp_tags=1
+"let g:php_asp_tags=1
 
 " filetype
 let g:filetype_m='objc'
@@ -152,16 +143,10 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 inoremap <expr><C-g>    neocomplete#undo_completion()
 inoremap <expr><C-l>    neocomplete#complete_common_string()
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 let g:lightline = {
-            \ 'colorscheme': 'PaperColor',
-            \}
+\ 'colorscheme': 'PaperColor',
+\}
 
 set completeopt=menuone
 
@@ -282,10 +267,6 @@ vnoremap ,* :s/^\(.*\)$/\/\* \1 \*\//<CR>:nohlsearch<CR>
 vnoremap ,( :s/^\(.*\)$/\(\* \1 \*\)/<CR>:nohlsearch<CR>
 vnoremap ,< :s/^\(.*\)$/<!-- \1 -->/<CR>:nohlsearch<CR>
 vnoremap ,d :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR>:nohlsearch<CR>
-
-" block comments
-vnoremap ,b v`<I<CR><esc>k0i/*<ESC>`>j0i*/<CR><esc><ESC>
-vnoremap ,h v`<I<CR><esc>k0i<!--<ESC>`>j0i--><CR><esc><ESC>
 "}}}
 
 filetype indent plugin on

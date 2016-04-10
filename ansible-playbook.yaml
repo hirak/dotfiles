@@ -101,17 +101,10 @@
 
     - name: composerダウンロード
       shell: |
-        curl -sLo ~/bin/composer https://getcomposer.org/composer.phar
+        curl -sLo ~/bin/composer https://packagist.jp/composer.phar
         chmod +x ~/bin/composer
       args:
         creates: ~/bin/composer
-
-    - name: phpunitダウンロード
-      shell: |
-        curl -sLo ~/bin/phpunit https://phar.phpunit.de/phpunit.phar
-        chmod +x ~/bin/phpunit
-      args:
-        creates: ~/bin/phpunit
 
     # ruby
     - name: ruby-buildを単独インストール
