@@ -147,4 +147,7 @@ augroup mysetting
     au BufRead,BufNewFile Berksfile set ft=ruby
     au BufRead,BufNewFile *.ejs set ft=html
     hi SpecialKey ctermfg=black guifg=black
+
+    au FileType php inoremap @ $this->
+    au FileType php inoremap @@ @
 augroup END

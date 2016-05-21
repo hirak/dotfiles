@@ -42,9 +42,13 @@ grepw() {
       --exclude-dir='.git' \
       --exclude-dir='.svn' \
       --exclude-dir='node_modules' \
+      --exclude-dir='bower_components' \
       --exclude-dir='vendor' \
+      --exclude-dir='gen' \
       --exclude='*.min.js' \
       --exclude='*.min.css' \
+      --exclude='*clients/admin/web/js/admin.js' \
+      --exclude='*httpd/webroot/js/admin.js' \
       --include='*.js' \
       --include='*.json' \
       --include='*.ejs' \
@@ -52,10 +56,23 @@ grepw() {
       --include='*.scss' \
       --include='*.html' \
       --include='*.php' \
-      --include='*.sql' \
       --include='*.rb' \
       --include='*.pl' \
       --include='*.py' \
+      "$1" "$dir"
+}
+
+# for SQL
+greps() {
+    local dir=${2:-.}
+    LANG=C fgrep --color -Inr \
+      --exclude-dir='.git' \
+      --exclude-dir='.svn' \
+      --exclude-dir='node_modules' \
+      --exclude-dir='vendor' \
+      --exclude='*.min.js' \
+      --exclude='*.min.css' \
+      --include='*.sql' \
       "$1" "$dir"
 }
 
@@ -71,6 +88,19 @@ grepg() {
       "$1" "$dir"
 }
 
+# for Java
+grepj() {
+    local dir=${2:-.}
+    LANG=C fgrep --color -Inr \
+      --exclude-dir='.git' \
+      --exclude-dir='.svn' \
+      --exclude-dir='node_modules' \
+      --exclude-dir='_vendor' \
+      --include='*.java' \
+      --include='*.xml' \
+      "$1" "$dir"
+}
+
 grepa-vim() {
     vim $(grepa "$@" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
 }
@@ -83,10 +113,13 @@ greph-vim() {
 grepw-vim() {
     vim $(grepw "$@" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
 }
+greps-vim() {
+    vim $(greps "$@" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+}
 
 find-vim() {
     local dir=${2:-.}
-    local target=$(find "$dir" -name "*$1*" -type f -not -path "*.git*" -not -path "*.svn*" | peco)
+    local target=$(find "$dir" -name "*$1*" -not -path "*.git*" -not -path "*.svn*" | peco)
     if [[ "$target" != "" ]]
     then
         vim "$target"

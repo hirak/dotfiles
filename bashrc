@@ -75,7 +75,7 @@ changecaption()
     echo -n -e "\e]2;$1\a"
 }
 #履歴共有設定
-function share_hitory {
+share_hitory() {
     history -a
     history -c
     history -r
@@ -95,12 +95,12 @@ rd()
         pushd $(tail -$1 ~/.cdranking | head -1)
     else
         length=$(wc -l ~/.cdranking)
-        tail ~/.cdranking | perl -pe 'BEGIN{$i=10} s/\/home\/hiraku/~/;$_=$i--."\t".$_'
+        tail ~/.cdranking | perl -pe 'BEGIN{$i=10} s/$HOME/~/;$_=$i--."\t".$_'
     fi
 }
 
 #履歴整理コマンド 重くなってきたら使う
-function sweep_history {
+sweep_history() {
     cat ~/.bash_history|sort|uniq > ~/.bash_history.tmp
     mv ~/.bash_history.tmp ~/.bash_history
 }
@@ -118,4 +118,4 @@ fi
 return
 
 # added by travis gem
-[ -f /Users/hiraku/.travis/travis.sh ] && source /Users/hiraku/.travis/travis.sh
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh

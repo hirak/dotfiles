@@ -15,7 +15,15 @@ call dein#begin(expand('~/.vim/dein/'))
 " Let dein manage dein
 " Required:
 call dein#add('Shougo/dein.vim')
-"call dein#add('Shougo/vimproc.vim', 'make')
+"call dein#add('Shougo/vimproc', {
+"          \ 'build': {
+"          \     'windows': 'tools\\update-dll-mingw',
+"          \     'cygwin': 'make -f make_cygwin.mak',
+"          \     'mac': 'make -f make_mac.mak',
+"          \     'linux': 'make',
+"          \     'unix': 'gmake'}})
+call dein#add('Shougo/vimproc')
+
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('mattn/emmet-vim')
@@ -32,12 +40,14 @@ call dein#add('itchyny/lightline.vim')
 call dein#add('itchyny/landscape.vim')
 call dein#add('elzr/vim-json')
 call dein#add('mxw/vim-jsx')
+call dein#add('shawncplus/phpcomplete.vim')
 call dein#add('toyamarinyon/vim-swift')
 call dein#add('vim-jp/vim-go-extra')
 call dein#add('NLKNguyen/papercolor-theme')
 call dein#add('ekalinin/Dockerfile.vim')
 call dein#add('tyru/open-browser.vim')
 call dein#add('tyru/open-browser-github.vim')
+call dein#add('majutsushi/tagbar')
 
 " from vim.org
 call dein#add('smartchr')
@@ -84,6 +94,11 @@ set smartcase
 set incsearch
 set hlsearch
 
+" unite
+let g:unite_source_grep_command = 'grep'
+let g:unite_source_grep_default_opts = '-In --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=vendor --exclude-dir=bower_components --exclude="*.min.js" --exclude="*.min.css" --include="*.php"'
+let g:unite_source_grep_max_candidates = 200
+
 " xml.vim
 let b:match_words="begin:end"
 let b:match_ignorecase=1
@@ -93,10 +108,6 @@ let g:netrw_liststyle = 3
 let g:netrw_list_hide = 'CVS,\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_altv = 1
 let g:netrw_alto = 1
-
-" phpのsyntax設定
-"let g:php_noShortTags=1
-"let g:php_asp_tags=1
 
 " filetype
 let g:filetype_m='objc'
@@ -140,6 +151,10 @@ if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
 
 inoremap <expr><C-g>    neocomplete#undo_completion()
 inoremap <expr><C-l>    neocomplete#complete_common_string()
@@ -211,45 +226,6 @@ set t_Co=256
 colorscheme PaperColor
 
 
-"nmap {{{
-
-"F2で現在の日付を入力
-nnoremap <F2> k:r!date +\%Y/\%m/\%d<CR>I
-nnoremap n nzz
-nnoremap N Nzz
-"}}}
-
-"imap {{{
-imap <F2> <Esc>:r!date +\%Y/\%m/\%d<CR>kJA
-
-"移動
-inoremap <C-f> <Right>
-inoremap <C-b> <Left>
-inoremap <C-p> <Up>
-inoremap <C-n> <Down>
-
-"$this->とか長いよね
-inoremap @ $this->
-inoremap @@ @
-inoremap <F3> array()<Esc>i
-inoremap <F4> <Space>=><Space>
-inoremap <F5> ['']<Esc>hi
-inoremap <F6> ->
-inoremap <F7> function(){}<Esc>i
-inoremap <F8> void function(){<Return>}();<Esc>O
-inoremap <Esc>Ow function<Space>
-inoremap <Esc>Ot public<Space>function<Space>
-inoremap <Esc>Oq public<Space>static<Space>function<Space>
-inoremap <Esc>Ou protected<Space>function<Space>
-inoremap <Esc>Or protected<Space>static<Space>function<Space>
-inoremap <Esc>Ox protected<Space>static<Space>final<Space>function<Space>
-inoremap <Esc>Ov private<Space>function<Space>
-inoremap <Esc>Os private<Space>static<Space>function<Space>
-inoremap <Esc>Oy private<Space>static<Space>final<Space>function<Space>
-inoremap <Esc>Op public<Space>function<Space>__construct()<Return>{<Return>}<Esc>O
-"}}}
-
-
 " commentout {{{
 " lhs comments
 vnoremap ,# :s/^/#/<CR>:nohlsearch<CR>
@@ -271,3 +247,4 @@ vnoremap ,d :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR>:nohlsearch<CR
 
 filetype indent plugin on
 
+set grepprg=grepa
