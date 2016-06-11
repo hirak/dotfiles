@@ -2,6 +2,8 @@
 tap 'caskroom/cask'
 tap 'homebrew/dupes'
 cask 'google-japanese-ime'
+cask 'opera'
+cask 'flash-player'
 
 brew 'openssl'
 brew 'lua'
@@ -21,6 +23,7 @@ brew 'screen'
 brew 'curl'
 brew 'wget'
 brew 'libiconv'
+brew 'readline'
 #link 'openssl', args: ['force']
 #link 'zlib', args: ['force']
 #link 'curl', args: ['force']
