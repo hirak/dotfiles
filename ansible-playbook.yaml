@@ -95,9 +95,9 @@
         creates: ~/bin/php-build
 
     - name: ~/.php/を作成
-      command: mkdir -p ~/.php
-      args:
-        creates: ~/.php
+      file:
+        path: ~/.php
+        state: directory
 
     - name: composerダウンロード
       shell: |
@@ -120,6 +120,6 @@
         creates: ~/bin/ruby-build
 
     - name: ~/.ruby/を作成
-      command: mkdir -p ~/.ruby
-      args:
-        creates: ~/.ruby
+      file:
+        path: ~/.ruby
+        state: directory
