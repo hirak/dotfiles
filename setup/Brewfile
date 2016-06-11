@@ -1,0 +1,21 @@
+# vim: set ft=ruby:
+tap 'caskroom/cask'
+tap 'homebrew/dupes'
+cask 'google-japanese-ime'
+
+brew 'openssl'
+#link 'openssl', args: ['force']
+brew 'lua'
+brew 'vim', args: ['with-lua']
+brew 'bison'
+brew 'autoconf'
+brew 'automake'
+brew 'bison'
+brew 're2c'
+brew 'libjpeg'
+brew 'libpng'
+brew 'libmcrypt'
+brew 'libxml2'
+brew 'go'
+brew 'zlib'
+brew 'screen'
