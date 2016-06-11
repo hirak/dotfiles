@@ -24,6 +24,8 @@ brew 'curl'
 brew 'wget'
 brew 'libiconv'
 brew 'readline'
+brew 'pngquant'
+brew 'libedit'
 #link 'openssl', args: ['force']
 #link 'zlib', args: ['force']
 #link 'curl', args: ['force']
