@@ -26,6 +26,5 @@ brew 'libiconv'
 brew 'readline'
 brew 'pngquant'
 brew 'libedit'
-#link 'openssl', args: ['force']
-#link 'zlib', args: ['force']
-#link 'curl', args: ['force']
+brew 'tidy-html5'
+#brew link openssl zlib curl libxml2 --force
