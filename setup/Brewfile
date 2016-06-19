@@ -28,4 +28,5 @@ brew 'pngquant'
 brew 'libedit'
 brew 'libevent'
 brew 'libev'
+brew 'ctags'
 #brew link openssl zlib curl libxml2 --force
