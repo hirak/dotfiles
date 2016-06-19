@@ -26,5 +26,6 @@ brew 'libiconv'
 brew 'readline'
 brew 'pngquant'
 brew 'libedit'
-brew 'tidy-html5'
+brew 'libevent'
+brew 'libev'
 #brew link openssl zlib curl libxml2 --force
