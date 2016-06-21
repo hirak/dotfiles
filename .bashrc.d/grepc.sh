@@ -83,7 +83,7 @@ grepg() {
       --exclude-dir='.git' \
       --exclude-dir='.svn' \
       --exclude-dir='node_modules' \
-      --exclude-dir='_vendor' \
+      --exclude-dir='vendor' \
       --include='*.go' \
       "$1" "$dir"
 }
@@ -95,58 +95,54 @@ grepj() {
       --exclude-dir='.git' \
       --exclude-dir='.svn' \
       --exclude-dir='node_modules' \
-      --exclude-dir='_vendor' \
+      --exclude-dir='vendor' \
       --include='*.java' \
       --include='*.xml' \
       "$1" "$dir"
 }
 
 grepa-vim() {
-    vim $(grepa "$@" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    vim $(grepa "$@" | peco --prompt "grepa-vim > " --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
 }
 grepc-vim() {
-    vim $(grepc "$@" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    vim $(grepc "$@" | peco --prompt "grepc-vim > " --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
 }
 greph-vim() {
-    vim $(greph "$@" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    vim $(greph "$@" | peco --prompt "greph-vim > " --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
 }
 grepw-vim() {
-    vim $(grepw "$@" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    vim $(grepw "$@" | peco --prompt "grepw-vim > " --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
 }
 greps-vim() {
-    vim $(greps "$@" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    vim $(greps "$@" | peco --prompt "greps-vim > " --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
 }
 
 find-vim() {
     local dir=${2:-.}
-    local target=$(find "$dir" -name "*$1*" -not -path "*.git*" -not -path "*.svn*" | peco)
-    if [[ "$target" != "" ]]
-    then
+    local target=$(find "$dir" -name "*$1*" -not -path "*.git*" -not -path "*.svn*" | peco --prompt "find-vim > ")
+    if [[ "$target" != "" ]]; then
         vim "$target"
     fi
 }
 
 git-vim() {
-    local target=$(git status -s | peco | cut -f3 -d' ')
-    if [[ "$target" != "" ]]
-    then
+    local target=$(git status -s | peco --prompt "git-vim > " | cut -f3 -d' ')
+    if [[ "$target" != "" ]]; then
         vim "$target"
     fi
 }
 
 find-cd() {
     local dir=${2:-.}
-    local target=$(find "$dir" -name "*$1*" -type d -not -path "*.git*" -not -path "*.svn*" | peco)
-    if [[ "$target" != "" ]]
-    then
+    local target=$(find "$dir" -name "*$1*" -type d -not -path "*.git*" -not -path "*.svn*" | peco --prompt "find-cd > ")
+    if [[ "$target" != "" ]]; then
         cd "$target"
     fi
 }
 
 locate-cd() {
-    local target=$(locate "$1" | peco)
-    if [[ "$target" != "" ]]
-    then
+    local target=$(locate "$1" | peco --prompt "locate-cd > ")
+    if [[ "$target" != "" ]]; then
         cd "$target"
     fi
 }

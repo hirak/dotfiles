@@ -48,6 +48,7 @@ call dein#add('ekalinin/Dockerfile.vim')
 call dein#add('tyru/open-browser.vim')
 call dein#add('tyru/open-browser-github.vim')
 call dein#add('majutsushi/tagbar')
+call dein#add('tsukkee/unite-tag')
 
 " from vim.org
 call dein#add('smartchr')
