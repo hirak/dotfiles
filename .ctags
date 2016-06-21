@@ -1,0 +1,16 @@
+--recurse
+--langdef=php7
+--langmap=php7:.php
+--languages=php7
+--exclude=.svn
+--exclude=.git
+--exclude=artifacts
+--exclude=node_modules
+--exclude=tests
+--exclude=Tests
+--tag-relative=yes
+--regex-php7=/^[ \t]*class ([0-9a-zA-Z_]+)/\1/c/
+--regex-php7=/^[ \t]*interface ([0-9a-zA-Z_]+)/\1/c/
+--regex-php7=/^[ \t]*trait ([0-9a-zA-Z_]+)/\1/c/
+--regex-php7=/^[ \t]*(public |static |final |abstract |protected |private )+ function +([0-9a-zA-Z_]+)/\2/f/
+--regex-php7=/^[ \t]*const +([0-9a-zA-Z_]+)/\1/d/
