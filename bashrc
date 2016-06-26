@@ -59,7 +59,12 @@ else
     alias ls='ls -G'
 fi
 
-alias gh='cd $(ghq list -p | peco)'
+gh() {
+    local target=$(ghq list -p | peco)
+    if [[ "$target" != "" ]]; then
+        cd "$target"
+    fi
+}
 alias ll='ls -la'
 alias dirs='dirs -v'
 alias ..='cd ..'
