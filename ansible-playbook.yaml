@@ -34,19 +34,6 @@
     #    - vim-enhanced
     #    - screen
 
-    #- name: dotfilesコピー
-    #  git:
-    #    dest: ~/src/github.com/hirak/dotfiles
-    #    repo: git://github.com/hirak/dotfiles.git
-    #    accept_hostkey: yes
-    #    update: yes
-
-    #- name: dotfilesをリンク
-    #  shell: sh link.sh; source ~/.bash_profile
-    #  args:
-    #    chdir: ~/src/github.com/hirak/dotfiles/
-    #    creates: ~/.vim/bundle/neobundle.vim
-
     # ghq
     - name: Download latest ghq
       shell: go get github.com/motemen/ghq
