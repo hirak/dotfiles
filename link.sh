@@ -12,7 +12,6 @@ rm -f ~/.inputrc
 rm -f ~/.vimrc
 rm -f ~/.gitignore_global
 rm -rf ~/.vim/dein
-#rm -rf ~/.vim/dein/repos/github.com/Shougo/dein.vim
 rm -f ~/.git-completion.bash
 rm -f ~/.git-prompt.sh
 rm -f ~/.gitconfig

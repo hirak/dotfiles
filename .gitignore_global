@@ -3,4 +3,5 @@
 Thumbs.db
 phpunitcoverage
 .phpdbginit
+.bootstrap.php
 tags
