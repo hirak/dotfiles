@@ -102,47 +102,76 @@ grepj() {
 }
 
 grepa-vim() {
-    vim $(grepa "$@" | peco --prompt "grepa-vim > " --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    local dir=${2:-.}
+    local target=$(grepa "$@" "$dir" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    if [[ "$target" != "" ]]; then
+        echo "vim $target" >> ~/.bash_history
+        vim $target
+    fi
 }
 grepc-vim() {
-    vim $(grepc "$@" | peco --prompt "grepc-vim > " --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    local dir=${2:-.}
+    local target=$(grepc "$@" "$dir" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    if [[ "$target" != "" ]]; then
+        echo "vim $target" >> ~/.bash_history
+        vim $target
+    fi
 }
 greph-vim() {
-    vim $(greph "$@" | peco --prompt "greph-vim > " --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    local dir=${2:-.}
+    local target=$(greph "$@" "$dir" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    if [[ "$target" != "" ]]; then
+        echo "vim $target" >> ~/.bash_history
+        vim $target
+    fi
 }
 grepw-vim() {
-    vim $(grepw "$@" | peco --prompt "grepw-vim > " --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    local dir=${2:-.}
+    local target=$(grepw "$@" "$dir" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    if [[ "$target" != "" ]]; then
+        echo "vim $target" >> ~/.bash_history
+        vim $target
+    fi
 }
 greps-vim() {
-    vim $(greps "$@" | peco --prompt "greps-vim > " --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    local dir=${2:-.}
+    local target=$(greps "$@" "$dir" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    if [[ "$target" != "" ]]; then
+        echo "vim $target" >> ~/.bash_history
+        vim $target
+    fi
 }
 
 find-vim() {
     local dir=${2:-.}
-    local target=$(find "$dir" -name "*$1*" -not -path "*.git*" -not -path "*.svn*" | peco --prompt "find-vim > ")
+    local target=$(find "$dir" -name "*$1*" -not -path "*.git*" -not -path "*.svn*" | peco)
     if [[ "$target" != "" ]]; then
-        vim "$target"
+        echo "vim $target" >> ~/.bash_history
+        vim $target
     fi
 }
 
 git-vim() {
-    local target=$(git status -s | peco --prompt "git-vim > " | cut -f3 -d' ')
+    local target=$(git status -s | peco | cut -f3 -d' ')
     if [[ "$target" != "" ]]; then
-        vim "$target"
+        echo "vim $target" >> ~/.bash_history
+        vim $target
     fi
 }
 
 find-cd() {
     local dir=${2:-.}
-    local target=$(find "$dir" -name "*$1*" -type d -not -path "*.git*" -not -path "*.svn*" | peco --prompt "find-cd > ")
+    local target=$(find "$dir" -name "*$1*" -type d -not -path "*.git*" -not -path "*.svn*" | peco)
     if [[ "$target" != "" ]]; then
+        echo "cd $target" >> ~/.bash_history
         cd "$target"
     fi
 }
 
 locate-cd() {
-    local target=$(locate "$1" | peco --prompt "locate-cd > ")
-    if [[ "$target" != "" ]]; then
+    local target=$(locate "$1" | peco)
+    if [[ "$target" != "" ]]
+    then
         cd "$target"
     fi
 }
