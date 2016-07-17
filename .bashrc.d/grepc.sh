@@ -47,8 +47,7 @@ grepw() {
       --exclude-dir='gen' \
       --exclude='*.min.js' \
       --exclude='*.min.css' \
-      --exclude='*clients/admin/web/js/admin.js' \
-      --exclude='*httpd/webroot/js/admin.js' \
+      --exclude='admin.js' \
       --include='*.js' \
       --include='*.json' \
       --include='*.ejs' \

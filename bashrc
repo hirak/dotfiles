@@ -4,6 +4,7 @@
 
 export EDITOR=vim
 export GOPATH=$HOME
+export MINI_USER=hiraku
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
 export LESS_TERMCAP_me=$'\E[0m'           # end mode
@@ -59,7 +60,8 @@ else
     alias ls='ls -G'
 fi
 
-gh() {
+gh()
+{
     local target=$(ghq list -p | peco)
     if [[ "$target" != "" ]]; then
         cd "$target"
