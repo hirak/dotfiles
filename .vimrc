@@ -49,6 +49,7 @@ call dein#add('tyru/open-browser.vim')
 call dein#add('tyru/open-browser-github.vim')
 call dein#add('majutsushi/tagbar')
 call dein#add('tsukkee/unite-tag')
+call dein#add('editorconfig/editorconfig-vim')
 
 " from vim.org
 call dein#add('smartchr')
