@@ -48,6 +48,9 @@ grepw() {
       --exclude='*.min.js' \
       --exclude='*.min.css' \
       --exclude='admin.js' \
+      --exclude='app.jp.css' \
+      --exclude='app.us.css' \
+      --exclude='sell.js' \
       --include='*.js' \
       --include='*.json' \
       --include='*.ejs' \
@@ -58,6 +61,7 @@ grepw() {
       --include='*.rb' \
       --include='*.pl' \
       --include='*.py' \
+      --include='*.twig' \
       "$1" "$dir"
 }
 

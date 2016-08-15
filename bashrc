@@ -69,6 +69,7 @@ gh()
 }
 alias ll='ls -la'
 alias dirs='dirs -v'
+alias c=composer
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
