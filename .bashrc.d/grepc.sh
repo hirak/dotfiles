@@ -50,6 +50,10 @@ grepw() {
       --exclude='admin.js' \
       --exclude='app.jp.css' \
       --exclude='app.us.css' \
+      --exclude='en_US.json' \
+      --exclude='ja_JP.json' \
+      --exclude='jp_common.css' \
+      --exclude='us_common.css' \
       --exclude='sell.js' \
       --include='*.js' \
       --include='*.json' \
