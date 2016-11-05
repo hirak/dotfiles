@@ -123,7 +123,15 @@ if [ -f ~/.bashrc_extra ]; then
     source ~/.bashrc_extra
 fi
 
-return
-
 # added by travis gem
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+light() {
+    if [ -z "$2" ]; then
+        src="pbpaste"
+    else
+        src="cat $2"
+    fi
+
+    $src | highlight -O rtf --syntax $1 --font="Migu 1M" --style=breeze --font-size 24 | pbcopy
+}
