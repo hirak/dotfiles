@@ -201,7 +201,7 @@ syn keyword phpStatement  return break continue exit yield from contained
 syn keyword phpKeyword  var const contained
 
 " Type
-syn keyword phpType bool[ean] int[eger] real double float string array object resource callable NULL  contained
+syn keyword phpType bool[ean] int[eger] real double float string array object resource callable iterable NULL  contained
 
 " Structure
 syn keyword phpStructure  extends implements instanceof parent self use trait namespace contained
@@ -398,7 +398,7 @@ syntax keyword phpStatement die contained
 
 " Highlighting for PHP5's user-definable magic class methods
 syntax keyword phpSpecialFunction containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier
-  \ __construct __destruct __call __toString __sleep __wakeup __set __get __unset __isset __clone __set_state
+  \ __construct __destruct __call __toString __sleep __wakeup __set __get __unset __isset __clone __set_state __invoke __invokeStatic __debugInfo
 " Highlighting for __autoload slightly different from line above
 syntax keyword phpSpecialFunction containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier,phpMethodsVar
   \ __autoload
@@ -414,25 +414,20 @@ syntax keyword phpClasses containedin=ALLBUT,phpComment,phpStringDouble,phpStrin
   \ ArrayIterator RecursiveArrayIterator DirectoryIterator RecursiveDirectoryIterator
   \ InvalidArgumentException LengthException OutOfRangeException RuntimeException OutOfBoundsException
   \ OverflowException RangeException UnderflowException UnexpectedValueException
+  \ Throwable Generator Closure
   \ PDO PDOException PDOStatement PDORow
-  \ DateTime DateTimeZone DateInterval DatePeriod
+  \ DateTime DateTimeZone DateInterval DatePeriod DateTimeImmutable DateTimeInterface
   \ Reflection ReflectionFunction ReflectionParameter ReflectionMethod ReflectionClass
   \ ReflectionObject ReflectionProperty ReflectionExtension ReflectionException
+  \ ReflectionType
   \ SplFileInfo SplFileObject SplTempFileObject SplObjectStorage SplQueue SplDoublyLinkedList SplFixedArray SplStack SplHeap SplMaxHeap SplMinHeap SplPriorityQueue
-  \ XMLWriter LibXMLError XMLReader SimpleXMLElement SimpleXMLIterator
-  \ DOMException DOMStringList DOMNameList DOMDomError DOMErrorHandler
-  \ DOMImplementation DOMImplementationList DOMImplementationSource
-  \ DOMNode DOMNameSpaceNode DOMDocumentFragment DOMDocument DOMNodeList DOMNamedNodeMap
-  \ DOMCharacterData DOMAttr DOMElement DOMText DOMComment DOMTypeinfo DOMUserDataHandler
-  \ DOMLocator DOMConfiguration DOMCdataSection DOMDocumentType DOMNotation DOMEntity
-  \ DOMEntityReference DOMProcessingInstruction DOMStringExtend DOMXPath
 highlight link phpClasses phpFunctions
 
 " Highlighting for PHP5's built-in interfaces
 " - built-in classes harvested from get_declared_interfaces() in 5.1.4
 syntax keyword phpInterfaces containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier,phpMethodsVar
   \ Iterator IteratorAggregate RecursiveIterator OuterIterator SeekableIterator
-  \ Traversable ArrayAccess Serializable Countable SplObserver SplSubject Reflector
+  \ Traversable ArrayAccess Serializable Countable SplObserver SplSubject Reflector JsonSerializable
 highlight link phpInterfaces phpConstant
 
 " option defaults:
