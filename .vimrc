@@ -26,7 +26,7 @@ call dein#add('Shougo/vimproc')
 
 call dein#add('NLKNguyen/papercolor-theme')
 call dein#add('Shougo/denite.nvim')
-call dein#add('Shougo/deoplete.nvim')
+call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('editorconfig/editorconfig-vim')
@@ -130,16 +130,6 @@ let g:quickrun_config._ = {
 " smartchr
 "inoremap <expr> = smartchr#loop(' = ', '=', ' === ')
 "inoremap <expr> , smartchr#one_of(', ', ',')
-
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_max_list = 20
-let g:neocomplcache_plugin_disable = {
-\ 'syntax_complete' : 1,
-\ }
-let g:neocomplcache_plugin_completion_length = {
-\ 'syntax_complete' : 100,
-\}
 
 " neocomplete
 let g:neocomplete#enable_at_startup = 1
