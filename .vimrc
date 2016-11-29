@@ -47,6 +47,7 @@ call dein#add('toyamarinyon/vim-swift')
 call dein#add('tyru/open-browser-github.vim')
 call dein#add('tyru/open-browser.vim')
 call dein#add('vim-jp/vim-go-extra')
+call dein#add('PeterRincker/vim-argumentative')
 
 " from vim.org
 call dein#add('smartchr')
@@ -232,6 +233,11 @@ vnoremap ,* :s/^\(.*\)$/\/\* \1 \*\//<CR>:nohlsearch<CR>
 vnoremap ,( :s/^\(.*\)$/\(\* \1 \*\)/<CR>:nohlsearch<CR>
 vnoremap ,< :s/^\(.*\)$/<!-- \1 -->/<CR>:nohlsearch<CR>
 vnoremap ,d :s/^\([/(]\*\\|<!--\) \(.*\) \(\*[/)]\\|-->\)$/\2/<CR>:nohlsearch<CR>
+
+nmap [; <Plug>Argumentative_Prev
+nmap ]; <Plug>Argumentative_Next
+nmap <; <Plug>Argumentative_MoveLeft
+nmap >; <Plug>Argumentative_MoveRight
 "}}}
 
 filetype indent plugin on

@@ -398,7 +398,7 @@ syntax keyword phpStatement die contained
 
 " Highlighting for PHP5's user-definable magic class methods
 syntax keyword phpSpecialFunction containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier
-  \ __construct __destruct __call __toString __sleep __wakeup __set __get __unset __isset __clone __set_state
+  \ __construct __destruct __call __toString __sleep __wakeup __set __get __unset __isset __clone __set_state __debugInfo
 " Highlighting for __autoload slightly different from line above
 syntax keyword phpSpecialFunction containedin=ALLBUT,phpComment,phpStringDouble,phpStringSingle,phpIdentifier,phpMethodsVar
   \ __autoload
