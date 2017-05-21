@@ -58,6 +58,7 @@ call dein#end()
 "endif
 
 "End dein Scripts-------------------------
+nnoremap <silent>,ff :Unite grep/git:. -default-action=tabopen<CR>
 nnoremap <silent>,fs :Unite grep/git:src -default-action=tabopen<CR>
 nnoremap <silent>,ft :Unite grep/git:tests -default-action=tabopen<CR>
 

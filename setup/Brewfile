@@ -31,4 +31,4 @@ brew 'libevent'
 brew 'libev'
 brew 'ctags'
 brew 'peco'
-brew --HEAD 'universal-ctags'
+brew 'universal-ctags', args: ['HEAD']
