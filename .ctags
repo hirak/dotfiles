@@ -5,6 +5,7 @@
 --exclude=.svn
 --exclude=.git
 --exclude=artifacts
+--exclude=phpcodecoverage
 --exclude=node_modules
 --exclude=tests
 --exclude=Tests

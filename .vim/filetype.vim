@@ -7,6 +7,7 @@ augroup mysetting
     au FileType javascript :syntax keyword jsThis http https fs net os assert stream url util arguments valueOf toString prototype app express use error
     au FileType javascript :highlight jsThis ctermfg=darkyellow
     au FileType javascript :highlight jsBuiltins ctermfg=darkblue
+    au FileType javascript setlocal sw=2 sts=2 ts=2
 
     au FileType c set noexpandtab
     au FileType c :syntax keyword stdio fopen fclose fgetc getc fgets fputc putc fputs fread fwrite fprintf fscanf ftell fseek fgetpos fsetpos feof ferror clearerr fflush freopen frename remove getchar putchar puts perror printf scanf strcpy strncpy strcat strncat strlen strcmp strncmp strchr strrchr strcspn strspn strpbrk strstr strtok strerror memcpy memmove memset memcmp memchr
@@ -146,6 +147,7 @@ augroup mysetting
     au BufRead,BufNewFile upstart.conf set ft=upstart
     au BufRead,BufNewFile Berksfile set ft=ruby
     au BufRead,BufNewFile *.ejs set ft=html
+    au BufRead,BufNewFile *.twig set ft=django
     hi SpecialKey ctermfg=black guifg=black
 
     au FileType php inoremap @ $this->

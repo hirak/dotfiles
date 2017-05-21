@@ -15,13 +15,6 @@ call dein#begin(expand('~/.vim/dein/'))
 " Let dein manage dein
 " Required:
 call dein#add('Shougo/dein.vim')
-"call dein#add('Shougo/vimproc', {
-"          \ 'build': {
-"          \     'windows': 'tools\\update-dll-mingw',
-"          \     'cygwin': 'make -f make_cygwin.mak',
-"          \     'mac': 'make -f make_mac.mak',
-"          \     'linux': 'make',
-"          \     'unix': 'gmake'}})
 call dein#add('Shougo/vimproc')
 
 call dein#add('NLKNguyen/papercolor-theme')
@@ -65,6 +58,22 @@ call dein#end()
 
 "End dein Scripts-------------------------
 
+call denite#custom#var('file_rec', 'command',
+      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+"call denite#custom#var('file_rec', 'command', ['git', 'grep'])
+
+call denite#custom#var('grep', 'command', ['git', 'grep'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', 'separator', [])
+"call denite#custom#var('grep', 'default_opts',
+"      \ ['--nocolor', '--nogroup'])
+
+nnoremap <silent> <C-k><C-f> :<C-u>Denite file_rec<CR>
+nnoremap <silent> <C-k><C-g> :<C-u>Denite grep<CR>
+nnoremap <silent> <C-k><C-l> :<C-u>Denite line<CR>
+nnoremap <silent> <C-k><C-u> :<C-u>Denite file_mru<CR>
+nnoremap <silent> <C-k><C-y> :<C-u>Denite neoyank<CR>
 
 """""""
 set encoding=utf-8
@@ -144,7 +153,8 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\%(\h\w*\)\?\|\h\w*::\%(\h\w*\)\?'
+"let g:neocomplete#sources#omni#input_patterns.php = ''
 
 inoremap <expr><C-g>    neocomplete#undo_completion()
 inoremap <expr><C-l>    neocomplete#complete_common_string()

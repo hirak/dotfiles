@@ -42,7 +42,10 @@ grepw() {
       --exclude-dir='.git' \
       --exclude-dir='.svn' \
       --exclude-dir='node_modules' \
+      --exclude-dir='app/tmp' \
       --exclude-dir='bower_components' \
+      --exclude-dir='sql' \
+      --exclude-dir='phpcodecoverage' \
       --exclude-dir='vendor' \
       --exclude-dir='gen' \
       --exclude='*.min.js' \
@@ -108,6 +111,15 @@ grepj() {
       --include='*.java' \
       --include='*.xml' \
       "$1" "$dir"
+}
+
+grepg-vim() {
+    local dir=${2:-.}
+    local target=$(git grep -In "$@" "$dir" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    if [[ "$target" != "" ]]; then
+        echo "vim $target" >> ~/.bash_history
+        vim $target
+    fi
 }
 
 grepa-vim() {
