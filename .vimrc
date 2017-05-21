@@ -18,7 +18,8 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc')
 
 call dein#add('NLKNguyen/papercolor-theme')
-call dein#add('Shougo/denite.nvim')
+call dein#add('Shougo/unite.vim')
+call dein#add('lambdalisue/unite-grep-vcs')
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('Shougo/neosnippet.vim')
@@ -43,10 +44,10 @@ call dein#add('vim-jp/vim-go-extra')
 call dein#add('PeterRincker/vim-argumentative')
 
 " from vim.org
-call dein#add('smartchr')
-call dein#add('xml.vim')
-call dein#add('sudo.vim')
-call dein#add('netrw.vim')
+call dein#add('vim-scripts/smartchr')
+call dein#add('vim-scripts/xml.vim')
+call dein#add('vim-scripts/sudo.vim')
+call dein#add('vim-scripts/netrw.vim')
 
 " Required:
 call dein#end()
@@ -57,23 +58,9 @@ call dein#end()
 "endif
 
 "End dein Scripts-------------------------
+nnoremap <silent>,fs :Unite grep/git:src -buffer-name=search-buffer
+nnoremap <silent>,ft :Unite grep/git:tests -buffer-name=search-buffer
 
-call denite#custom#var('file_rec', 'command',
-      \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-"call denite#custom#var('file_rec', 'command', ['git', 'grep'])
-
-call denite#custom#var('grep', 'command', ['git', 'grep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'final_opts', [])
-call denite#custom#var('grep', 'separator', [])
-"call denite#custom#var('grep', 'default_opts',
-"      \ ['--nocolor', '--nogroup'])
-
-nnoremap <silent> <C-k><C-f> :<C-u>Denite file_rec<CR>
-nnoremap <silent> <C-k><C-g> :<C-u>Denite grep<CR>
-nnoremap <silent> <C-k><C-l> :<C-u>Denite line<CR>
-nnoremap <silent> <C-k><C-u> :<C-u>Denite file_mru<CR>
-nnoremap <silent> <C-k><C-y> :<C-u>Denite neoyank<CR>
 
 """""""
 set encoding=utf-8
@@ -251,11 +238,3 @@ nmap >; <Plug>Argumentative_MoveRight
 "}}}
 
 filetype indent plugin on
-
-
-" unite grepにhw(highway)を使う
-if executable('hw')
-  let g:unite_source_grep_command = 'hw'
-  let g:unite_source_grep_default_opts = '--no-group --no-color'
-  let g:unite_source_grep_recursive_opt = ''
-endif
