@@ -76,6 +76,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias sr='screen -x -U'
+alias readlog="jq '{time: (.time + 9*60*60 | strftime(\"%F %XJST\")), level, message}'"
 
 changecaption()
 {
