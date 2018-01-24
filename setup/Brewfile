@@ -1,10 +1,6 @@
 # vim: set ft=ruby:
-tap 'caskroom/cask'
 tap 'homebrew/dupes'
 tap 'universal-ctags/universal-ctags'
-cask 'google-japanese-ime'
-cask 'opera'
-cask 'flash-player'
 
 brew 'openssl'
 brew 'lua'
@@ -29,6 +25,5 @@ brew 'pngquant'
 brew 'libedit'
 brew 'libevent'
 brew 'libev'
-brew 'ctags'
 brew 'peco'
 brew 'universal-ctags', args: ['HEAD']
