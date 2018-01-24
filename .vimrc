@@ -60,7 +60,11 @@ call dein#end()
 "End dein Scripts-------------------------
 nnoremap <silent>,ff :Unite grep/git:. -default-action=tabopen<CR>
 nnoremap <silent>,fs :Unite grep/git:src -default-action=tabopen<CR>
+nnoremap <silent>,fa :Unite grep/git:app -default-action=tabopen<CR>
 nnoremap <silent>,ft :Unite grep/git:tests -default-action=tabopen<CR>
+nnoremap <silent>,fff :Unite find:. -default-action=tabopen<CR>
+nnoremap <silent>,ffs :call unite#start#standard([['file_rec/async', 'src']], {"tab":1})<CR>
+nnoremap <silent>,fft :call unite#start#standard([['file_rec/async', 'tests']], {"tab":1})<CR>
 
 
 """""""
@@ -147,8 +151,19 @@ endif
 inoremap <expr><C-g>    neocomplete#undo_completion()
 inoremap <expr><C-l>    neocomplete#complete_common_string()
 
+function! LightlineFilename()
+    return expand('%f:t') !=# '' ? expand('%f:t') : '[No Name]'
+endfunction
+
 let g:lightline = {
 \ 'colorscheme': 'PaperColor',
+\ 'active': {
+\   'left': [ [ 'mode', 'paste' ],
+\             [ 'readonly', 'filename', 'modified' ] ]
+\ },
+\ 'component_function': {
+\   'filename': 'LightlineFilename',
+\ },
 \}
 
 set completeopt=menuone
@@ -192,18 +207,7 @@ function! PHPLint()
 endfunction
 nnoremap ,l :call PHPLint()<CR>
 
-""
-"
-function! ShebangExecute()
-    let m = matchlist(getline(1), '#!\(.*\)')
-    if (len(m) > 2)
-        execute '!'.m[1]. ' %'
-    else
-        execute '!' &ft ' %'
-    endif
-endfunction
-
-nnoremap ,e :call ShebangExecute()<CR>
+nnoremap ,e :QuickRun<CR>
 
 syntax on
 "普段は黒背景で使っているので。

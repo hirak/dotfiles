@@ -172,6 +172,15 @@ find-vim() {
     fi
 }
 
+now-vim() {
+    local dir=${2:-.}
+    local target=$(find "$dir" -path "./src/*" -not -path "./.git/*" | peco)
+    if [[ "$target" != "" ]]; then
+        echo "vim $target" >> ~/.bash_history
+        vim $target
+    fi
+}
+
 git-vim() {
     local target=$(git status -s | peco | cut -f3 -d' ')
     if [[ "$target" != "" ]]; then

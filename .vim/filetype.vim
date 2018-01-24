@@ -138,7 +138,7 @@ augroup mysetting
     au FileType html setlocal sw=1 sts=1 ts=1
     au FileType xml  setlocal sw=2 sts=2 ts=2
     au FileType go setlocal sw=2 sts=2 ts=2 noexpandtab
-    au FileType go :syntax keyword gospecial err
+    au FileType go :syntax keyword gospecial err unicode strings context pathpkg os ctx
     au FileType go :highlight gospecial ctermfg=darkyellow
 
     au BufRead,BufNewFile *.h set ft=c

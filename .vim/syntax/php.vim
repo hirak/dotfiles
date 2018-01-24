@@ -202,7 +202,7 @@ syn keyword phpStatement  return break continue exit yield from contained
 syn keyword phpKeyword  var const contained
 
 " Type
-syn keyword phpType bool[ean] int[eger] real double float string array object resource callable iterable NULL  contained
+syn keyword phpType bool[ean] int[eger] real double float string array object resource callable iterable NULL void contained
 
 " Structure
 syn keyword phpStructure  extends implements instanceof parent self use trait namespace contained
