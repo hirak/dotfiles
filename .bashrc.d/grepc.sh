@@ -74,6 +74,15 @@ grepw() {
       "$1" "$dir"
 }
 
+# for Web
+grepgg-vim() {
+    local dir=${2:-.}
+    LANG=C fgrep --color -Inr \
+      --exclude-dir='.git' \
+      --exclude-dir='.svn' \
+      "$1" "$dir"
+}
+
 # for SQL
 greps() {
     local dir=${2:-.}
@@ -85,18 +94,6 @@ greps() {
       --exclude='*.min.js' \
       --exclude='*.min.css' \
       --include='*.sql' \
-      "$1" "$dir"
-}
-
-# for Go
-grepg() {
-    local dir=${2:-.}
-    LANG=C fgrep --color -Inr \
-      --exclude-dir='.git' \
-      --exclude-dir='.svn' \
-      --exclude-dir='node_modules' \
-      --exclude-dir='vendor' \
-      --include='*.go' \
       "$1" "$dir"
 }
 

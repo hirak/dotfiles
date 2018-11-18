@@ -11,6 +11,10 @@ if &compatible
 endif
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim/
 
+if has('python3')
+  silent! python3 1
+endif
+
 call dein#begin(expand('~/.vim/dein/'))
 " Let dein manage dein
 " Required:
@@ -28,11 +32,12 @@ call dein#add('ekalinin/Dockerfile.vim')
 call dein#add('elzr/vim-json')
 call dein#add('itchyny/landscape.vim')
 call dein#add('itchyny/lightline.vim')
-call dein#add('joonty/vdebug')
+"call dein#add('joonty/vdebug')
 call dein#add('kchmck/vim-coffee-script')
 call dein#add('majutsushi/tagbar')
 call dein#add('mattn/emmet-vim')
 call dein#add('mxw/vim-jsx')
+call dein#add('cespare/vim-toml')
 call dein#add('pangloss/vim-javascript')
 call dein#add('shawncplus/phpcomplete.vim')
 call dein#add('thinca/vim-localrc')
@@ -40,8 +45,12 @@ call dein#add('thinca/vim-quickrun')
 call dein#add('toyamarinyon/vim-swift')
 call dein#add('tyru/open-browser-github.vim')
 call dein#add('tyru/open-browser.vim')
-call dein#add('vim-jp/vim-go-extra')
+"call dein#add('vim-jp/vim-go-extra')
+call dein#add('fatih/vim-go')
+call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('PeterRincker/vim-argumentative')
+call dein#add('phpstan/vim-phpstan')
+call dein#add('hashivim/vim-terraform')
 
 " from vim.org
 call dein#add('vim-scripts/smartchr')
@@ -65,6 +74,12 @@ nnoremap <silent>,ft :Unite grep/git:tests -default-action=tabopen<CR>
 nnoremap <silent>,fff :Unite find:. -default-action=tabopen<CR>
 nnoremap <silent>,ffs :call unite#start#standard([['file_rec/async', 'src']], {"tab":1})<CR>
 nnoremap <silent>,fft :call unite#start#standard([['file_rec/async', 'tests']], {"tab":1})<CR>
+
+"その他
+":Import net/http
+" c-x c-o でメソッド名補完される
+":Godoc net/http
+":Fmt
 
 
 """""""
@@ -103,6 +118,30 @@ let g:unite_source_grep_max_candidates = 200
 " xml.vim
 let b:match_words="begin:end"
 let b:match_ignorecase=1
+
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_term_enabled = 1
+let g:go_highlight_build_constraints = 1
+let g:go_auto_type_info = 1
+
+
+augroup GolangSettings
+  autocmd!
+  autocmd FileType go nmap <leader>gb <Plug>(go-build)
+  autocmd FileType go nmap <leader>gt <Plug>(go-test)
+  autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
+  autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+  autocmd FileType go nmap <Leader>dt <Plug>(go-def-tab)
+  autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
+  autocmd FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+  autocmd FileType go :highlight goErr cterm=bold ctermfg=214
+  autocmd FileType go :match goErr /\<err\>/
+augroup END
 
 " netrwの設定
 let g:netrw_liststyle = 3
