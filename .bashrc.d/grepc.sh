@@ -119,6 +119,13 @@ grepg-vim() {
     fi
 }
 
+gd() {
+    local target=$(cat ~/.gopkgs | peco --query "$LBUFFER")
+    if [[ "$target" != "" ]]; then
+        godoc -src $target | vim - -R -c "set ft=go"
+    fi
+}
+
 grepa-vim() {
     local dir=${2:-.}
     local target=$(grepa "$@" "$dir" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
@@ -199,6 +206,21 @@ locate-cd() {
     local target=$(locate "$1" | peco)
     if [[ "$target" != "" ]]
     then
+        cd "$target"
+    fi
+}
+
+gcd() {
+    local cloud=$(find ~/src/cloud.google.com/go -maxdepth 1 -type d)
+    local api=$(find ~/src/github.com/googleapis/googleapis/google -maxdepth 1 -type d)
+    local pb=$(find ~/src/github.com/protocolbuffers/protobuf/src/google -maxdepth 1 -type d)
+    local gp=$(find ~/src/google.golang.org/genproto/protobuf -maxdepth 1 -type d)
+    local ga=$(find ~/src/google.golang.org/genproto/googleapis -maxdepth 1 -type d)
+    local gaa=$(find ~/src/google.golang.org/api -maxdepth 1 -type d)
+    local grpc=$(find ~/src/google.golang.org/grpc -maxdepth 1 -type d)
+    local target=$(echo -e "$cloud\n$api\n$pb\n$gp\n$ga\n$gaa\n$grpc" | peco)
+
+    if [[ "$target" != "" ]]; then
         cd "$target"
     fi
 }

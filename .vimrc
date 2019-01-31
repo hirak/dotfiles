@@ -96,8 +96,8 @@ set fileformats=unix,dos,mac
 set ambiwidth=double
 
 " タブ文字の見える化
-set list
-set listchars=tab:>-,trail:_
+" set list
+" set listchars=tab:>-,trail:_
 
 set backspace=indent,eol,start
 set showmatch
