@@ -119,10 +119,19 @@ grepg-vim() {
     fi
 }
 
+gv-vim() {
+    local dir=${2:-.}
+    local target=$(go vet ./... 2>&1 | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    if [[ "$target" != "" ]]; then
+        echo "vim $target" >> ~/.bash_history
+        vim $target
+    fi
+}
+
 gd() {
     local target=$(cat ~/.gopkgs | peco --query "$LBUFFER")
     if [[ "$target" != "" ]]; then
-        godoc -src $target | vim - -R -c "set ft=go"
+        go doc -all -src -u $target | vim - -R -c "set ft=go"
     fi
 }
 
