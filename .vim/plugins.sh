@@ -13,6 +13,11 @@ tyru/open-browser-github.vim
 tyru/open-browser.vim
 hashivim/vim-terraform
 editorconfig/editorconfig-vim
+prabirshrestha/async.vim
+prabirshrestha/asyncomplete.vim
+prabirshrestha/asyncomplete-lsp.vim
 prabirshrestha/vim-lsp
+mattn/vim-lsp-settings
+mattn/vim-goimports
 _EOL_
 
