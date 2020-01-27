@@ -13,5 +13,6 @@ tyru/open-browser-github.vim
 tyru/open-browser.vim
 hashivim/vim-terraform
 editorconfig/editorconfig-vim
+prabirshrestha/vim-lsp
 _EOL_
 

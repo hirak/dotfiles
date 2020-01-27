@@ -31,3 +31,6 @@
 [submodule ".vim/pack/editorconfig/start/editorconfig-vim"]
 	path = .vim/pack/editorconfig/start/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
+[submodule ".vim/pack/prabirshrestha/start/vim-lsp"]
+	path = .vim/pack/prabirshrestha/start/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
