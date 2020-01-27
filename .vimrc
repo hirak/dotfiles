@@ -5,68 +5,70 @@
 scriptencoding 'utf-8'
 filetype off
 
-"dein Scripts-----------------------------
-if &compatible
-    set nocompatible               " Be iMproved
-endif
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim/
+""dein Scripts-----------------------------
+"if &compatible
+"    set nocompatible               " Be iMproved
+"endif
+"set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim/
 
-if has('python3')
-  silent! python3 1
-endif
-
-call dein#begin(expand('~/.vim/dein/'))
-" Let dein manage dein
-" Required:
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/vimproc')
-
-call dein#add('NLKNguyen/papercolor-theme')
-call dein#add('Shougo/unite.vim')
-call dein#add('lambdalisue/unite-grep-vcs')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/neosnippet.vim')
-call dein#add('editorconfig/editorconfig-vim')
-call dein#add('ekalinin/Dockerfile.vim')
-call dein#add('elzr/vim-json')
-call dein#add('itchyny/landscape.vim')
-call dein#add('itchyny/lightline.vim')
-"call dein#add('joonty/vdebug')
-call dein#add('kchmck/vim-coffee-script')
-call dein#add('majutsushi/tagbar')
-call dein#add('mattn/emmet-vim')
-call dein#add('mxw/vim-jsx')
-call dein#add('cespare/vim-toml')
-call dein#add('pangloss/vim-javascript')
-call dein#add('shawncplus/phpcomplete.vim')
-call dein#add('thinca/vim-localrc')
-call dein#add('thinca/vim-quickrun')
-call dein#add('toyamarinyon/vim-swift')
-call dein#add('tyru/open-browser-github.vim')
-call dein#add('tyru/open-browser.vim')
-"call dein#add('vim-jp/vim-go-extra')
-call dein#add('fatih/vim-go')
-call dein#add('ctrlpvim/ctrlp.vim')
-call dein#add('PeterRincker/vim-argumentative')
-call dein#add('phpstan/vim-phpstan')
-call dein#add('hashivim/vim-terraform')
-
-" from vim.org
-call dein#add('vim-scripts/smartchr')
-call dein#add('vim-scripts/xml.vim')
-call dein#add('vim-scripts/sudo.vim')
-call dein#add('vim-scripts/netrw.vim')
-
-" Required:
-call dein#end()
-
-" If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
+"if has('python3')
+"  silent! python3 1
 "endif
 
-"End dein Scripts-------------------------
+"call dein#begin(expand('~/.vim/dein/'))
+"" Let dein manage dein
+"" Required:
+"call dein#add('Shougo/dein.vim')
+"call dein#add('Shougo/vimproc')
+"
+"call dein#add('NLKNguyen/papercolor-theme')
+"call dein#add('Shougo/unite.vim')
+"call dein#add('lambdalisue/unite-grep-vcs')
+"call dein#add('Shougo/neocomplete.vim')
+"call dein#add('Shougo/neosnippet-snippets')
+"call dein#add('Shougo/neosnippet.vim')
+"call dein#add('editorconfig/editorconfig-vim')
+"call dein#add('ekalinin/Dockerfile.vim')
+"call dein#add('elzr/vim-json')
+"call dein#add('itchyny/landscape.vim')
+"call dein#add('itchyny/lightline.vim')
+""call dein#add('joonty/vdebug')
+"call dein#add('kchmck/vim-coffee-script')
+"call dein#add('majutsushi/tagbar')
+"call dein#add('mattn/emmet-vim')
+"call dein#add('mxw/vim-jsx')
+"call dein#add('cespare/vim-toml')
+"call dein#add('pangloss/vim-javascript')
+"call dein#add('shawncplus/phpcomplete.vim')
+"call dein#add('thinca/vim-localrc')
+"call dein#add('thinca/vim-quickrun')
+"call dein#add('toyamarinyon/vim-swift')
+"call dein#add('tyru/open-browser-github.vim')
+"call dein#add('tyru/open-browser.vim')
+""call dein#add('vim-jp/vim-go-extra')
+"call dein#add('fatih/vim-go')
+"call dein#add('ctrlpvim/ctrlp.vim')
+"call dein#add('PeterRincker/vim-argumentative')
+"call dein#add('phpstan/vim-phpstan')
+"call dein#add('hashivim/vim-terraform')
+"call dein#add('prabirshrestha/vim-lsp')
+"
+"" from vim.org
+"call dein#add('vim-scripts/smartchr')
+"call dein#add('vim-scripts/xml.vim')
+"call dein#add('vim-scripts/sudo.vim')
+"call dein#add('vim-scripts/netrw.vim')
+"
+"" Required:
+"call dein#end()
+"
+"" If you want to install not installed plugins on startup.
+""if dein#check_install()
+""  call dein#install()
+""endif
+"
+""End dein Scripts-------------------------
+
 nnoremap <silent>,ff :Unite grep/git:. -default-action=tabopen<CR>
 nnoremap <silent>,fs :Unite grep/git:src -default-action=tabopen<CR>
 nnoremap <silent>,fa :Unite grep/git:app -default-action=tabopen<CR>
@@ -207,13 +209,13 @@ let g:lightline = {
 
 set completeopt=menuone
 
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"" Plugin key-mappings.
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"
+"" SuperTab like snippets behavior.
+"imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
@@ -255,6 +257,7 @@ set background=dark
 "256色表示の許可
 set t_Co=256
 colorscheme PaperColor
+"colorscheme mycolor
 
 
 " commentout {{{

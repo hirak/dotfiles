@@ -1,0 +1,33 @@
+[submodule ".vim/pack/cespare/start/vim-toml"]
+	path = .vim/pack/cespare/start/vim-toml
+	url = https://github.com/cespare/vim-toml
+[submodule ".vim/pack/hashivim/start/vim-terraform"]
+	path = .vim/pack/hashivim/start/vim-terraform
+	url = https://github.com/hashivim/vim-terraform
+[submodule ".vim/pack/ekalinin/opt/Dockerfile.vim"]
+	path = .vim/pack/ekalinin/opt/Dockerfile.vim
+	url = https://github.com/ekalinin/Dockerfile.vim
+[submodule ".vim/pack/itchyny/start/landscape.vim"]
+	path = .vim/pack/itchyny/start/landscape.vim
+	url = https://github.com/itchyny/landscape.vim
+[submodule ".vim/pack/itchyny/start/lightline.vim"]
+	path = .vim/pack/itchyny/start/lightline.vim
+	url = https://github.com/itchyny/lightline.vim
+[submodule ".vim/pack/NLKNguyen/start/papercolor-theme"]
+	path = .vim/pack/NLKNguyen/start/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme
+[submodule ".vim/pack/ekalinin/start/Dockerfile.vim"]
+	path = .vim/pack/ekalinin/start/Dockerfile.vim
+	url = https://github.com/ekalinin/Dockerfile.vim
+[submodule ".vim/pack/thinca/start/vim-quickrun"]
+	path = .vim/pack/thinca/start/vim-quickrun
+	url = https://github.com/thinca/vim-quickrun
+[submodule ".vim/pack/tyru/start/open-browser-github.vim"]
+	path = .vim/pack/tyru/start/open-browser-github.vim
+	url = https://github.com/tyru/open-browser-github.vim
+[submodule ".vim/pack/tyru/start/open-browser.vim"]
+	path = .vim/pack/tyru/start/open-browser.vim
+	url = https://github.com/tyru/open-browser.vim
+[submodule ".vim/pack/editorconfig/start/editorconfig-vim"]
+	path = .vim/pack/editorconfig/start/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim
