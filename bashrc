@@ -19,6 +19,10 @@ source ~/.git-prompt.sh
 echo -n 'git config --get user.email: ' >&2
 git config --get user.email >&2
 
+kube_prompt() {
+    echo $(cat ~/.kube/config | grep "    namespace:" | awk '{print $2}')
+}
+
 CR="$(echo -ne '\r')"
 LF="$(echo -ne '\n')"
 TAB="$(echo -ne '\t')"
@@ -44,7 +48,7 @@ COLOUR_DEFAULT="${ESC}[m"
 pscolor=$COLOUR_HIGHLIGHT_BLUE
 HOST=`hostname`
 
-export PS1="\ek\e\134\[${pscolor}\][\u@$HOST:\w]\[${COLOUR_HIGHLIGHT_YELLOW}\]\$(__git_ps1)\n\[${COLOUR_DEFAULT}\]\$ "
+export PS1="\ek\e\134\[${pscolor}\][\u@$HOST:\w]\[${COLOUR_HIGHLIGHT_YELLOW}\]\$(__git_ps1) \$(kube_prompt)\n\[${COLOUR_DEFAULT}\]\$ "
 export CVS_RSH=ssh
 export CVSEDITOR=vim
 

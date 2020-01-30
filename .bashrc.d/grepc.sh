@@ -40,7 +40,6 @@ grepw() {
     local dir=${2:-.}
     LANG=C fgrep --color -Inr \
       --exclude-dir='.git' \
-      --exclude-dir='.svn' \
       --exclude-dir='node_modules' \
       --exclude-dir='app/tmp' \
       --exclude-dir='bower_components' \
@@ -50,16 +49,6 @@ grepw() {
       --exclude-dir='gen' \
       --exclude='*.min.js' \
       --exclude='*.min.css' \
-      --exclude='admin.js' \
-      --exclude='app.jp.css' \
-      --exclude='app.us.css' \
-      --exclude='en_US.json' \
-      --exclude='ja_JP.json' \
-      --exclude='jp_common.css' \
-      --exclude='us_common.css' \
-      --exclude='sell.js' \
-      --exclude='app.js' \
-      --exclude='help_center.js' \
       --include='*.js' \
       --include='*.json' \
       --include='*.ejs' \
