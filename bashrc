@@ -47,6 +47,11 @@ COLOUR_DEFAULT="${ESC}[m"
 
 pscolor=$COLOUR_HIGHLIGHT_BLUE
 HOST=`hostname`
+kube_prompt() {
+  KUBECONFIG=~/.kube/config
+  kube_namespace=$(cat $KUBECONFIG | grep "    namespace:" | awk '{print $2}')
+  echo $kube_namespace
+}
 
 export PS1="\ek\e\134\[${pscolor}\][\u@$HOST:\w]\[${COLOUR_HIGHLIGHT_YELLOW}\]\$(__git_ps1) \$(kube_prompt)\n\[${COLOUR_DEFAULT}\]\$ "
 export CVS_RSH=ssh
