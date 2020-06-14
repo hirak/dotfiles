@@ -71,7 +71,7 @@ fi
 
 gh()
 {
-    local target=$(ghq list -p | peco)
+    local target=$(ghq list -p $1 | peco)
     if [[ "$target" != "" ]]; then
         cd "$target"
     fi
