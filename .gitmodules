@@ -49,3 +49,6 @@
 [submodule ".vim/pack/mattn/start/vim-goimports"]
 	path = .vim/pack/mattn/start/vim-goimports
 	url = https://github.com/mattn/vim-goimports
+[submodule ".vim/pack/aklt/start/plantuml-syntax"]
+	path = .vim/pack/aklt/start/plantuml-syntax
+	url = https://github.com/aklt/plantuml-syntax

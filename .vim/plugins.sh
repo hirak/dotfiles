@@ -19,5 +19,6 @@ prabirshrestha/asyncomplete-lsp.vim
 prabirshrestha/vim-lsp
 mattn/vim-lsp-settings
 mattn/vim-goimports
+aklt/plantuml-syntax
 _EOL_
 
