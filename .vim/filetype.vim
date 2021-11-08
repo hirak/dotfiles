@@ -154,4 +154,7 @@ augroup mysetting
 
     au FileType php inoremap @ $this->
     au FileType php inoremap @@ @
+
+    au FileType go inoremap @ database.
+    au FileType go inoremap @@ @
 augroup END
