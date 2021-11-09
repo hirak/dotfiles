@@ -19,7 +19,7 @@ let g:lsp_settings = {
 \     'workspace_config': {
 \       'gopls': {
 \         'env': {
-\           'GOFLAGS': '-tags=parallel,e2e',
+\           'GOFLAGS': '-tags=parallel,serial,e2e',
 \         },
 \       },
 \     },
