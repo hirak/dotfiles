@@ -36,11 +36,3 @@ fi
 ln -s $BASEDIR/bashrc ~/.bashrc
 ln -s $BASEDIR/.git-completion.bash ~/.git-completion.bash
 ln -s $BASEDIR/.git-prompt.sh ~/.git-prompt.sh
-
-if [ ! -d ~/.vim/dein/repos/github.com/Shougo/dein.vim ]
-then
-    git clone {git:/,~/.vim/dein/repos}/github.com/Shougo/dein.vim
-    git clone {git:/,~/.vim/dein/repos}/github.com/Shougo/vimproc
-    cd ~/.vim/dein/repos/github.com/Shougo/vimproc
-    make
-fi

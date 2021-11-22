@@ -64,11 +64,12 @@ grepw() {
 }
 
 # for Web
-grepgg-vim() {
+grepgg() {
     local dir=${2:-.}
     LANG=C fgrep --color -Inr \
       --exclude-dir='.git' \
       --exclude-dir='.svn' \
+      --exclude-dir='vendor' \
       "$1" "$dir"
 }
 
@@ -102,6 +103,15 @@ grepj() {
 grepg-vim() {
     local dir=${2:-.}
     local target=$(git grep -In "$@" "$dir" | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    if [[ "$target" != "" ]]; then
+        echo "vim $target" >> ~/.bash_history
+        vim $target
+    fi
+}
+
+grepgt-vim() {
+    local dir=${2:-.}
+    local target=$(git grep -In "$@" "$dir" | grep -v '_test.go' | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
     if [[ "$target" != "" ]]; then
         echo "vim $target" >> ~/.bash_history
         vim $target
