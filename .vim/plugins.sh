@@ -20,5 +20,7 @@ prabirshrestha/vim-lsp
 mattn/vim-lsp-settings
 mattn/vim-goimports
 aklt/plantuml-syntax
+buoto/gotests-vim
+jjo/vim-cue
 _EOL_
 

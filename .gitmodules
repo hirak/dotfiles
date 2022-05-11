@@ -52,3 +52,9 @@
 [submodule ".vim/pack/aklt/start/plantuml-syntax"]
 	path = .vim/pack/aklt/start/plantuml-syntax
 	url = https://github.com/aklt/plantuml-syntax
+[submodule ".vim/pack/buoto/start/gotests-vim"]
+	path = .vim/pack/buoto/start/gotests-vim
+	url = https://github.com/buoto/gotests-vim
+[submodule ".vim/pack/jjo/start/vim-cue"]
+	path = .vim/pack/jjo/start/vim-cue
+	url = https://github.com/jjo/vim-cue
