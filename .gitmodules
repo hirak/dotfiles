@@ -58,3 +58,6 @@
 [submodule ".vim/pack/jjo/start/vim-cue"]
 	path = .vim/pack/jjo/start/vim-cue
 	url = https://github.com/jjo/vim-cue
+[submodule ".vim/pack/tokorom/start/vim-review"]
+	path = .vim/pack/tokorom/start/vim-review
+	url = https://github.com/tokorom/vim-review

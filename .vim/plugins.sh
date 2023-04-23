@@ -22,5 +22,6 @@ mattn/vim-goimports
 aklt/plantuml-syntax
 buoto/gotests-vim
 jjo/vim-cue
+tokorom/vim-review
 _EOL_
 
