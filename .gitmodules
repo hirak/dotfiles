@@ -61,3 +61,9 @@
 [submodule ".vim/pack/tokorom/start/vim-review"]
 	path = .vim/pack/tokorom/start/vim-review
 	url = https://github.com/tokorom/vim-review
+[submodule ".vim/pack/udalov/start/kotlin-vim"]
+	path = .vim/pack/udalov/start/kotlin-vim
+	url = https://github.com/udalov/kotlin-vim
+[submodule ".vim/pack/github/start/copilot.vim"]
+	path = .vim/pack/github/start/copilot.vim
+	url = https://github.com/github/copilot.vim

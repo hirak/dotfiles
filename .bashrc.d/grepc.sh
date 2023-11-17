@@ -177,16 +177,7 @@ greps-vim() {
 
 find-vim() {
     local dir=${2:-.}
-    local target=$(find "$dir" -name "*$1*" -not -path "*.git*" -not -path "*.svn*" | peco)
-    if [[ "$target" != "" ]]; then
-        echo "vim $target" >> ~/.bash_history
-        vim $target
-    fi
-}
-
-now-vim() {
-    local dir=${2:-.}
-    local target=$(find "$dir" -path "./src/*" -not -path "./.git/*" | peco)
+    local target=$(find "$dir" -name "*$1*" -not -path "*.git*" | peco)
     if [[ "$target" != "" ]]; then
         echo "vim $target" >> ~/.bash_history
         vim $target
@@ -203,7 +194,15 @@ git-vim() {
 
 find-cd() {
     local dir=${2:-.}
-    local target=$(find "$dir" -name "*$1*" -type d -not -path "*.git*" -not -path "*.svn*" | peco)
+    local target=$(find "$dir" -name "*$1*" -type d -not -path "*.git*" | peco)
+    if [[ "$target" != "" ]]; then
+        echo "cd $target" >> ~/.bash_history
+        cd "$target"
+    fi
+}
+
+f-cd() {
+    local target=$(git ls-files "*$1*" | format-dir.php "$1" | peco)
     if [[ "$target" != "" ]]; then
         echo "cd $target" >> ~/.bash_history
         cd "$target"

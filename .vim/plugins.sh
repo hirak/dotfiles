@@ -23,5 +23,7 @@ aklt/plantuml-syntax
 buoto/gotests-vim
 jjo/vim-cue
 tokorom/vim-review
+udalov/kotlin-vim
+github/copilot.vim
 _EOL_
 
