@@ -1,5 +1,5 @@
 export LANG=ja_JP.UTF-8
-export PATH=~/bin:~/google-cloud-sdk/bin:~/.php/current/bin:~/.krew/bin:$PATH
+export PATH=/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:~/bin:~/google-cloud-sdk/bin:~/.php/current/bin:~/.krew/bin:$PATH
 source ~/.bashrc
 
 # The next line updates PATH for the Google Cloud SDK.

@@ -10,17 +10,30 @@ nmap <silent> <f2> :LspRename<CR>
 nmap <silent> <Leader>d :LspTypeDefinition<CR>
 nmap <silent> <Leader>r :LspReferences<CR>
 nmap <silent> <Leader>i :LspImplementation<CR>
+nmap <silent> <Leader>h :LspHover<CR>
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 0
 let g:lsp_settings = {
 \   'gopls': {
+\     'buildFlags': ['-tags=parallel,serial,e2e'],
+\     'env': {
+\       'GOFLAGS': '-tags=parallel,serial,e2e',
+\     },
 \     'workspace_config': {
 \       'gopls': {
 \         'env': {
 \           'GOFLAGS': '-tags=parallel,serial,e2e',
 \         },
+\         'buildFlags': ['-tags=parallel,serial,e2e'],
+\       },
+\     },
+\   },
+\   'intelephense': {
+\     'workspace_config': {
+\       'intelephense': {
+\         'stubs': ['Core','standard','date','hash','pcre','json','SPL','Reflection','SQLite','sqlite3','PDO','curl','grpc','phar','uv','superglobals'],
 \       },
 \     },
 \   },
@@ -54,6 +67,8 @@ set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+
+set grepprg=git\ grep\ -n\ --no-color
 
 " unite
 let g:unite_source_grep_command = 'grep'

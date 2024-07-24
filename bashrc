@@ -70,7 +70,7 @@ else
     alias ls='ls -G'
 fi
 
-gh()
+ghs()
 {
     local target=$(ghq list -p $1 | peco)
     if [[ "$target" != "" ]]; then
@@ -120,8 +120,7 @@ rd()
 
 #履歴整理コマンド 重くなってきたら使う
 sweep_history() {
-    cat ~/.bash_history|sort|uniq > ~/.bash_history.tmp
-    mv ~/.bash_history.tmp ~/.bash_history
+    cat ~/.bash_history|sort|uniq > ~/.bash_history.tmp && mv ~/.bash_history.tmp ~/.bash_history
 }
 
 if [ -d ~/.bashrc.d ]; then
