@@ -1,3 +1,4 @@
+# vim: filetype=bash:
 grepa() {
     local dir=${2:-.}
     LANG=C fgrep --color -Inr \
@@ -184,6 +185,15 @@ find-vim() {
     fi
 }
 
+f-vim() {
+    local dir=${2:-.}
+    local target=$(git ls-files -- "$dir/**/*$1*" | peco)
+    if [[ "$target" != "" ]]; then
+        echo "vim $target" >> ~/.bash_history
+        vim $target
+    fi
+}
+
 git-vim() {
     local target=$(git status -s | peco | cut -f3 -d' ')
     if [[ "$target" != "" ]]; then
@@ -202,7 +212,7 @@ find-cd() {
 }
 
 f-cd() {
-    local target=$(git ls-files "*$1*" | format-dir.php "$1" | peco)
+    local target=$(git ls-files -- "*$1*" | xargs -n 1 dirname | uniq | peco)
     if [[ "$target" != "" ]]; then
         echo "cd $target" >> ~/.bash_history
         cd "$target"

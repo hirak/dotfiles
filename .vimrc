@@ -69,6 +69,7 @@ set incsearch
 set hlsearch
 
 set grepprg=git\ grep\ -n\ --no-color
+au QuickfixCmdPost grep call OpenQuickfixWindow()
 
 " unite
 let g:unite_source_grep_command = 'grep'
