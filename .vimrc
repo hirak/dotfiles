@@ -69,6 +69,12 @@ set incsearch
 set hlsearch
 
 set grepprg=git\ grep\ -n\ --no-color
+
+" quickfix-windowを開き、modifiableに設定し、Windowサイズを調整
+function! OpenQuickfixWindow()
+    cw
+    set modifiable
+endfunction
 au QuickfixCmdPost grep call OpenQuickfixWindow()
 
 " unite

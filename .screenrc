@@ -23,6 +23,8 @@ term xterm-256color
 # original: http://www.tees.ne.jp/~sin-x/200406a.html#0403
 # scrolling caption
 caption always "%+0<%?%F%:%{= wr} %n %t%{ww}%?%?%F%{= wg}%:%{= ww}%? %-w%?%F%{=u dr}%?%50>%n %t%{-}%+w%65< %=%?%F%{.b}%?%y/%m/%d %?%F%{.m}%?%c%?%F%{wd}%?%? [%0`]%?"
+#caption always "%+0<%?%F%:%{= wr} %n %t%{ww}%?%?%F%{= wg}%:%{= ww}%? %-w%?%F%{=u dr}%?%5>%n %t%{-}%+w%6< %=%?%F%{.b}%?%y/%m/%d %?%F%{.m}%?%c%?%F%{wd}%?%? [%0`]%?"
+#hardstatus alwayslastline "%{= cd} %-w%{= wk} %n %t* %{-}%+w"
 
 #display running_command
 shelltitle "$ |shell"

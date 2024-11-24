@@ -112,7 +112,7 @@ grepg-vim() {
 
 grepgt-vim() {
     local dir=${2:-.}
-    local target=$(git grep -In "$@" "$dir" | grep -v '_test.go' | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
+    local target=$(git grep -In "$@" "$dir" | grep -v '_test.go' | grep -v 'Test.php' | peco --query "$LBUFFER" | awk -F : '{print "+" $2 " " $1}')
     if [[ "$target" != "" ]]; then
         echo "vim $target" >> ~/.bash_history
         vim $target
@@ -212,7 +212,8 @@ find-cd() {
 }
 
 f-cd() {
-    local target=$(git ls-files -- "*$1*" | xargs -n 1 dirname | uniq | peco)
+    local dir=${2:-.}
+    local target=$(git ls-files -- "*$1*" | grep "^$dir" | xargs -n 1 dirname | uniq | peco)
     if [[ "$target" != "" ]]; then
         echo "cd $target" >> ~/.bash_history
         cd "$target"
