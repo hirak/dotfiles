@@ -11,6 +11,19 @@ nmap <silent> <Leader>d :LspTypeDefinition<CR>
 nmap <silent> <Leader>r :LspReferences<CR>
 nmap <silent> <Leader>i :LspImplementation<CR>
 nmap <silent> <Leader>h :LspHover<CR>
+
+let g:lsp_log_file = expand('~/vim-lsp.log')
+let g:asyncomplete_log_file = expand('~/vim-asyncomplete.log')
+
+if executable('grpc-federation-language-server')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'grpc-federation-language-server',
+      \ 'cmd': {server_info->['grpc-federation-language-server']},
+      \ 'allowlist': ['proto'],
+      \ })
+  autocmd! BufWritePre *.proto call execute('LspDocumentFormatSync')
+endif
+
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_popup_delay = 200
@@ -37,7 +50,18 @@ let g:lsp_settings = {
 \       },
 \     },
 \   },
+\   'grpc-federation': {
+\     'path': "~/bin/grpc-federation-language-server",
+\     'import-paths': [
+\       './',
+\       './third_party/googleapis',
+\       './third_party/google',
+\       './third_party/github.com/mercari/grpc-federation/proto',
+\       './third_party/protoc-gen-validate'
+\     ],
+\   },
 \ }
+
 
 
 """""""

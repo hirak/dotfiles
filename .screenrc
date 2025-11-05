@@ -5,6 +5,7 @@
 # ESC = Ctrl + j
 escape ^j^j
 
+term xterm-256color
 defencoding utf-8
 encoding utf-8 utf-8
 autodetach on
@@ -17,14 +18,12 @@ hardstatus string "[ SCREEN %n: %t ] %h"
 termcapinfo xterm* 'Co#256:pa#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm:'
 attrcolor b ".I"
 defbce "on"
-term xterm-256color
 
 #
 # original: http://www.tees.ne.jp/~sin-x/200406a.html#0403
 # scrolling caption
-caption always "%+0<%?%F%:%{= wr} %n %t%{ww}%?%?%F%{= wg}%:%{= ww}%? %-w%?%F%{=u dr}%?%50>%n %t%{-}%+w%65< %=%?%F%{.b}%?%y/%m/%d %?%F%{.m}%?%c%?%F%{wd}%?%? [%0`]%?"
-#caption always "%+0<%?%F%:%{= wr} %n %t%{ww}%?%?%F%{= wg}%:%{= ww}%? %-w%?%F%{=u dr}%?%5>%n %t%{-}%+w%6< %=%?%F%{.b}%?%y/%m/%d %?%F%{.m}%?%c%?%F%{wd}%?%? [%0`]%?"
-#hardstatus alwayslastline "%{= cd} %-w%{= wk} %n %t* %{-}%+w"
+caption always "%+0<%?%F%:%{= i1;i7} %n %t%{i7;i7}%?%?%F%{= 2;7}%:%{= 7;7}%? %-w%?%F%{=u 7;0}%?%50>%n %t%{-}%+w%65< %=%?%F%{.i4;7}%?%y/%m/%d %?%F%{.i5;7}%?%c%?%F%{7;7}%?%? [%0`]%?"
+#hardstatus alwayslastline "%{= 0;6} %-w%{= 0;7} %n %t* %{-}%+w"
 
 #display running_command
 shelltitle "$ |shell"

@@ -17,9 +17,6 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 source ~/.git-completion.bash
 source ~/.git-prompt.sh
 
-echo -n 'git config --get user.email: ' >&2
-git config --get user.email >&2
-
 kube_prompt() {
     echo $(cat ~/.kube/config | grep "    namespace:" | awk '{print $2}')
 }
@@ -133,9 +130,6 @@ if [ -f ~/.bashrc_extra ]; then
     source ~/.bashrc_extra
 fi
 
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-
 light() {
     if [ -z "$2" ]; then
         src="pbpaste"
@@ -145,3 +139,5 @@ light() {
 
     $src | highlight -O rtf --syntax $1 --font="Migu 1M" --style=breeze --font-size 24 | pbcopy
 }
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"
