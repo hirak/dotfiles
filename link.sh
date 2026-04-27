@@ -21,6 +21,7 @@ rm -f ~/.ctags
 BASEDIR=~/src/github.com/hirak/dotfiles
 cp $BASEDIR/gitconfig ~/.gitconfig
 ln -s $BASEDIR/.screenrc ~/.screenrc
+ln -s $BASEDIR/.tmux.conf ~/.tmux.conf
 ln -s $BASEDIR/revokescreen ~/bin/revokescreen
 ln -s $BASEDIR/.bash_profile ~/.bash_profile
 ln -s $BASEDIR/.gitignore_global ~/.gitignore_global
